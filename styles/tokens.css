@@ -1,0 +1,16 @@
+:root {
+  --background: #0b0b0b; /* bg/default */
+  --card: #121212; /* bg/surface */
+  --foreground: #ffffff; /* text/primary */
+  --muted-foreground: #a1a1aa;
+  --border: #27272a;
+
+  --primary: #40ff50; /* brand green */
+  --primary-foreground: #0b0b0b;
+
+  --secondary: #4d53d5; /* indigo */
+  --secondary-foreground: #ffffff;
+
+  --accent: #73dd7c;
+  --accent-foreground: #0b0b0b;
+}
