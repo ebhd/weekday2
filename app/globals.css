@@ -2,5 +2,12 @@
 @import "../styles/tokens.css";
 
 @theme {
-  
+  --color-background: #0b0b0b;
+  --color-surface: #1;
+  --color-hover: #1;
+
+  /* brand colors */
+  --color-primary: #40ff50;
+  --color-soft: #70e67a;
+  --color-secondary: #4d53d5;
 }
