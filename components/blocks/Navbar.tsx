@@ -10,7 +10,8 @@ import { useMediaQuery } from "react-responsive";
 
 export function Navbar() {
   const [openMobileNav, setOpenMobileNav] = useState(false);
-  const customease = [0.05, 0.58, 0.57, 0.96];
+  const customease: [number, number, number, number] = [0.05, 0.58, 0.57, 0.96];
+
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   useEffect(() => {
