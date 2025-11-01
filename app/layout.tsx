@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-sans",
+});
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   title: "Drillrecord",
@@ -16,7 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-background text-white">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased md:px-48 px-4`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
