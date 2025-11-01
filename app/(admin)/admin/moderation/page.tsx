@@ -1,4 +1,7 @@
-import { Navbar } from "@/components/blocks/Navbar";
-export default function admin() {
-  return <Navbar />;
+export default function DashboardPage() {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+    </div>
+  );
 }
