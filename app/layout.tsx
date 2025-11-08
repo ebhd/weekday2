@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-background text-white">
+    <html lang="en" className=" text-white">
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased md:px-48 px-4`}
       >

@@ -1,5 +1,7 @@
 import "../globals.css";
 import { defaultSEO } from "@/config/seo";
+import { Navbar } from "@/components/blocks/Navbar";
+import { BackgroundFx } from "@/components/blocks/BackgroundFx";
 
 export const metadata = {
   title: defaultSEO.title,
@@ -11,5 +13,11 @@ export default function MarketingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div>{children}</div>;
+  return (
+    <div>
+      <BackgroundFx />
+      <Navbar />
+      {children}
+    </div>
+  );
 }
