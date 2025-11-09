@@ -18,26 +18,33 @@ export function SongPlayer() {
   };
 
   return (
-    <div className="max-w-[380px] w-full space-x-2 flex items-center">
-      <button onClick={onPlayPause}>
+    <div className="flex items-center space-x-2 w-full">
+      {/* === Play / Pause button — always visible === */}
+      <button
+        onClick={onPlayPause}
+        className="h-9 w-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition"
+      >
         {isPlaying ? (
-          <FontAwesomeIcon icon={faPause} />
+          <FontAwesomeIcon icon={faPause} className="text-white text-lg" />
         ) : (
-          <FontAwesomeIcon icon={faPlay} />
+          <FontAwesomeIcon icon={faPlay} className="text-white text-lg" />
         )}
       </button>
-      <WavesurferPlayer
-        height={100}
-        waveColor="white"
-        barHeight={0.7}
-        barGap={1}
-        width={350}
-        progressColor={"gray"}
-        url="/testsong.mp3"
-        onReady={onReady}
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-      />
+
+      {/* === Waveform — hidden on mobile, visible on desktop === */}
+      <div className="hidden lg:block flex-1 max-w-[350px]">
+        <WavesurferPlayer
+          height={100}
+          waveColor="white"
+          barHeight={0.7}
+          barGap={1}
+          progressColor={"gray"}
+          url="/testsong.mp3"
+          onReady={onReady}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        />
+      </div>
     </div>
   );
 }
