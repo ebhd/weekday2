@@ -5,7 +5,6 @@ import { RankingRowProps } from "../types";
 import Image from "next/image";
 
 export function RankingRow(props: RankingRowProps) {
-  // 🔹 Changed last column to auto (instead of 160px)
   const grid =
     "grid grid-cols-[80px_minmax(0,1.5fr)_minmax(0,1fr)_auto] items-center";
 
@@ -31,13 +30,13 @@ export function RankingRow(props: RankingRowProps) {
           alt={props.artistsName}
           width={64}
           height={64}
-          className="rounded-full object-cover shrink-0 w-14 h-14 lg:w-16 lg:h-16"
+          className="rounded-full object-cover shrink-0 w-14 h-14 lg:w-16 lg:h-16 lg:block hidden"
         />
         <div className="flex flex-col min-w-0">
           <span className="truncate text-base lg:text-lg">
             {props.songName}
           </span>
-          <span className="text-sm text-white/60 truncate">
+          <span className="text-sm text-white/60 truncate text-left">
             {props.artistsName}
           </span>
         </div>

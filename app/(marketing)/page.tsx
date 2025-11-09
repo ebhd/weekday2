@@ -1,12 +1,11 @@
 import { Hero } from "@/components/core/Hero";
-import { RankingTable } from "@/features/ranking/components/RankingTable";
+import { RankingHomeSection } from "@/components/blocks/RankingHomeSection";
 export default function Home() {
   return (
     <>
       <Hero />
       <div className="flex justify-center">
-        {" "}
-        <RankingTable />{" "}
+        <RankingHomeSection />
       </div>
     </>
   );

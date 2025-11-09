@@ -5,10 +5,9 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 
-
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["100", "200", "300", "400", "600", "700"],
   display: "swap",
   variable: "--font-sans",
 });

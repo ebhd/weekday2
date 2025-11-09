@@ -17,21 +17,21 @@ export function RankingTable() {
     <div className="rounded-2xl text-white bg-linear-to-b from-accent/40 to-secondary/30 border border-muted-fg backdrop-blur-md shadow-lg shadow-black/20 overflow-hidden font-sans ">
       {/* HEADER */}
       <div
-        className={`${grid} px-4 lg:px-8 py-4 text-sm text-white/60 bg-black/20`}
+        className={`${grid} px-4 lg:px-8 py-4 text-sm text-white/60 lg:bg-black/20`}
       >
-        <div className="text-center font-normal">
+        <div className="text-center font-normal hidden lg:block">
           Rank <FontAwesomeIcon icon={faArrowsUpToLine} />
         </div>
 
-        <div className="text-center font-normal">
+        <div className="text-center font-normal hidden lg:block">
           Name <FontAwesomeIcon icon={faArrowsUpToLine} />
         </div>
 
-        <div className="text-center font-normal">
+        <div className="text-center font-normal hidden lg:block ">
           Song <FontAwesomeIcon icon={faArrowsUpToLine} />
         </div>
 
-        <div className="text-center font-normal">
+        <div className=" text-center font-normal hidden lg:block">
           Stats <FontAwesomeIcon icon={faArrowsUpToLine} />
         </div>
       </div>

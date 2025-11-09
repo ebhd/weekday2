@@ -32,7 +32,7 @@ export function SongPlayer() {
       </button>
 
       {/* === Waveform — hidden on mobile, visible on desktop === */}
-      <div className="hidden lg:block flex-1 max-w-[350px]">
+      <div className="hidden md:block flex-1 max-w-[350px]">
         <WavesurferPlayer
           height={100}
           waveColor="white"

@@ -1,6 +1,7 @@
 import { BackgroundFx } from "@/components/blocks/BackgroundFx";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+
 export function Hero() {
   return (
     <section className="flex w-full flex-col h-72 lg:h-[28rem] items-center justify-center text-center font-display">
@@ -24,6 +25,8 @@ export function Hero() {
           <Link href="/explore">Be an artist</Link>
         </Button>
       </div>
+
+
     </section>
   );
 }
