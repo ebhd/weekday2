@@ -3,14 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-
-type ArtistCardProps = {
-  rank: number;
-  name: string;
-  imagePath: string;
-  views: number;
-  hearts: number;
-};
+import { ArtistCardProps } from "../types";
 
 export function ArtistCard({
   rank,

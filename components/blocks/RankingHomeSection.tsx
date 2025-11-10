@@ -16,7 +16,6 @@ export function RankingHomeSection() {
     setVisibleCount((prev) => Math.min(prev + 3, mockRankingRows.length));
   };
 
-  // Split artists: odd ranks on the left, even on the right
   const leftArtists = visibleRows.filter((row) => row.rank % 2 === 1);
   const rightArtists = visibleRows.filter((row) => row.rank % 2 === 0);
 
