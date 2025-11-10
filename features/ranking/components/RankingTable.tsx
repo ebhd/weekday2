@@ -2,8 +2,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowsUpToLine } from "@fortawesome/free-solid-svg-icons";
 import { RankingRow } from "./RankingTableParts/RankingRow";
-import { mockRankingRows } from "@/mocks/artists";
-import { useState } from "react";
+
+import type { RankingRowProps } from "@/features/ranking/types";
 
 export const rankingDesktopGrid =
   "lg:grid lg:grid-cols-[60px_1.5fr_2fr_0.5fr] lg:items-center lg:gap-x-8";
@@ -11,10 +11,13 @@ export const rankingDesktopGrid =
 export const rankingMobileGrid =
   "grid grid-cols-[90px_minmax(0,2fr)_minmax(0,1fr)_minmax(0,2fr)] items-center gap-x-4";
 
-export function RankingTable() {
-  const [visibleCount, setVisibleCount] = useState(5);
-  const visibleRows = mockRankingRows.slice(0, visibleCount);
+type RankingTableProps = {
+  rows: RankingRowProps[];
+  hasMore: boolean;
+  onLoadMore: () => void;
+};
 
+export function RankingTable({ rows, hasMore, onLoadMore }: RankingTableProps) {
   return (
     <div>
       <div className="rounded-2xl text-white bg-linear-to-b from-accent/40 to-secondary/30 border border-muted-fg backdrop-blur-md shadow-lg shadow-black/20 overflow-hidden font-sans ">
@@ -32,16 +35,16 @@ export function RankingTable() {
 
         {/* BODY */}
         <div className="divide-y divide-white/10">
-          {visibleRows.map((row) => (
+          {rows.map((row) => (
             <RankingRow key={row.rank} {...row} />
           ))}
         </div>
       </div>
 
       {/* LOAD MORE */}
-      {visibleCount < mockRankingRows.length && (
+      {hasMore && (
         <button
-          onClick={() => setVisibleCount((prev) => prev + 3)}
+          onClick={onLoadMore}
           className="w-full h-10 border border-muted-fg rounded-xl flex items-center justify-center font-sans mt-3 hover:bg-white/5 transition"
         >
           <p>Load more</p>
