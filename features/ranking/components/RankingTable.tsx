@@ -4,9 +4,9 @@ import {
   faEye,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { SongPlayer } from "./SongPlayer";
-import { RankingRow } from "./RankingRow";
-import { SkeletonRow } from "./SkeletonRow";
+import { SongPlayer } from "./RankingTableParts/SongPlayer";
+import { RankingRow } from "./RankingTableParts/RankingRow";
+import { SkeletonRow } from "./RankingTableParts/SkeletonRow";
 import { mockRankingRows } from "@/mocks/artists";
 
 export function RankingTable() {

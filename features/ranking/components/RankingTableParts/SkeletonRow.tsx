@@ -3,7 +3,7 @@ export function SkeletonRow() {
     "grid grid-cols-[80px_minmax(0,1.5fr)_minmax(0,2fr)_160px] items-center";
 
   return (
-    <div className={`${grid} px-4 py-2 items-center animate-pulse`}>
+    <div className={`${grid} px-4 py-4 items-center animate-pulse`}>
       {/* Rank */}
       <div className="flex justify-center">
         <div className="h-8 w-8 rounded-full bg-white/10" />

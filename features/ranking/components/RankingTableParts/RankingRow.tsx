@@ -1,7 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SongPlayer } from "./SongPlayer";
-import { faEye, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { RankingRowProps } from "../types";
+import { RankingRowProps } from "../../types";
+import { RankingStat } from "./RankingStat";
 import Image from "next/image";
 
 export function RankingRow(props: RankingRowProps) {
@@ -49,22 +48,10 @@ export function RankingRow(props: RankingRowProps) {
 
       {/* Stats */}
       <div className="flex items-center justify-end gap-3">
-        {/* small stacked stats */}
-        <div className="flex flex-col gap-1 text-white/60 text-xs text-left">
-          <div className="flex items-center gap-1">
-            <FontAwesomeIcon icon={faEye} />
-            <span>{props.views}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <FontAwesomeIcon icon={faHeart} />
-            <span>{props.hearts}</span>
-          </div>
-        </div>
-
-        {/* big red heart */}
-        <FontAwesomeIcon
-          icon={faHeart}
-          className="text-red-500 text-2xl drop-shadow-[0_0_6px_rgba(255,80,80,0.6)]"
+        <RankingStat
+          views={props.views}
+          hearts={props.hearts}
+          isHearted={props.isHearted}
         />
       </div>
     </div>

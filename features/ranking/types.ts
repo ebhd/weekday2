@@ -6,4 +6,11 @@ export type RankingRowProps = {
   songPath: string;
   views: number;
   hearts: number;
+  isHearted: boolean;
+};
+
+export type RankingStats = {
+  views: number;
+  hearts: number;
+  isHearted: boolean;
 };
