@@ -2,27 +2,20 @@ import { SongPlayer } from "./SongPlayer";
 import { RankingRowProps } from "../../types";
 import { RankingStat } from "./RankingStat";
 import Image from "next/image";
-
+import { rankingDesktopGrid, rankingMobileGrid } from "../RankingTable";
 export function RankingRow(props: RankingRowProps) {
-  const grid =
-    "grid grid-cols-[80px_minmax(0,1.5fr)_minmax(0,1fr)_auto] items-center";
-
   return (
     <div
       className={`
-        ${grid} px-4 py-2 items-center
-        lg:grid
-        grid-cols-1 lg:grid-cols-[80px_minmax(0,1.5fr)_minmax(0,2fr)_auto]
+        ${rankingDesktopGrid} ${rankingMobileGrid} px-4 py-2
         gap-y-3 lg:gap-y-0
         border-b border-white/10
       `}
     >
-      {/* Rank */}
       <div className="text-center font-display text-4xl lg:text-5xl">
         {props.rank}.
       </div>
 
-      {/* Name column */}
       <div className="flex flex-row lg:flex-row items-center gap-3 justify-start w-full lg:pl-20 text-center lg:text-left">
         <Image
           src={props.artistsImagePath || "/default-avatar.png"}

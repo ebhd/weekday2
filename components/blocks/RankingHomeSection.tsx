@@ -8,9 +8,7 @@ export function RankingHomeSection() {
         icon={true}
       />
       <RankingTable />
-      <button className="w-full h-10 border border-muted-fg rounded-xl flex items-center justify-center font-sans">
-        <p>Load more</p>
-      </button>
+
     </div>
   );
 }

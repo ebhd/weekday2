@@ -10,7 +10,7 @@ import { useState } from "react";
 
 export function RankingStat(props: RankingStats) {
   const [isHearted, setIsHearted] = useState(props.isHearted);
-  console.log("isHearted:", isHearted);
+
   return (
     <>
       <div className="flex flex-col gap-1 text-white/60 text-xs text-left">
