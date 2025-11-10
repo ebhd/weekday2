@@ -9,7 +9,7 @@ export const rankingDesktopGrid =
   "lg:grid lg:grid-cols-[60px_1.5fr_2fr_0.5fr] lg:items-center lg:gap-x-8";
 
 export const rankingMobileGrid =
-  "grid grid-cols-[90px_2fr_1fr_2fr] items-center gap-x-4";
+  "grid grid-cols-[90px_minmax(0,2fr)_minmax(0,1fr)_minmax(0,2fr)] items-center gap-x-4";
 
 export function RankingTable() {
   const [visibleCount, setVisibleCount] = useState(5);
