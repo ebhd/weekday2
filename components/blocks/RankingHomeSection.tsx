@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { TestBar } from "./TextBar";
 import { RankingTable } from "../../features/ranking/components/RankingTable";
 import { ArtistCard } from "@/features/artists/components/ArtistCards";
 import { mockRankingRows } from "@/mocks/artists";
+import { useSideCardCapacity } from "../blocks/useSideCardCapacity";
 
 export function RankingHomeSection() {
   const [visibleCount, setVisibleCount] = useState(4);
@@ -19,29 +20,14 @@ export function RankingHomeSection() {
   const tableRef = useRef<HTMLDivElement | null>(null);
   const firstCardRef = useRef<HTMLDivElement | null>(null);
 
-  const [maxSideCards, setMaxSideCards] = useState(4);
+  const maxSideCards = useSideCardCapacity(
+    tableRef,
+    firstCardRef,
+    visibleRows.length
+  );
 
-  useEffect(() => {
-    if (!tableRef.current || !firstCardRef.current) return;
-
-    const tableHeight = tableRef.current.offsetHeight;
-    const cardHeight = firstCardRef.current.offsetHeight;
-
-    const CARD_GAP_PX = 24;
-    const effectiveCardHeight = cardHeight + CARD_GAP_PX;
-
-    if (tableHeight > 0 && effectiveCardHeight > 0) {
-      const maxCardsPerColumn = Math.max(
-        1,
-        Math.floor((tableHeight + CARD_GAP_PX) / effectiveCardHeight)
-      );
-
-      setMaxSideCards(maxCardsPerColumn * 2);
-    }
-  }, [visibleRows.length]);
-
+  // only take as many artists as can visually fit next to the table
   const sideArtists = visibleRows.slice(0, maxSideCards);
-
   const leftArtists = sideArtists.filter((row) => row.rank % 2 === 1);
   const rightArtists = sideArtists.filter((row) => row.rank % 2 === 0);
 
@@ -52,7 +38,7 @@ export function RankingHomeSection() {
         icon={true}
       />
 
- 
+      {/* Mobile: just table */}
       <div className="w-full lg:hidden">
         <RankingTable
           rows={visibleRows}
@@ -61,11 +47,15 @@ export function RankingHomeSection() {
         />
       </div>
 
+      {/* Desktop: cards + table */}
       <div className="hidden lg:grid lg:w-full lg:grid-cols-[12rem_minmax(0,1fr)_12rem] lg:gap-6">
         {/* LEFT COLUMN */}
         <div className="flex flex-col gap-6">
           {leftArtists.map((row, index) => (
-            <div key={row.rank} ref={index === 0 ? firstCardRef : undefined}>
+            <div
+              key={row.rank}
+              ref={index === 0 ? firstCardRef : undefined} // only measure first card
+            >
               <ArtistCard
                 rank={row.rank}
                 name={row.artistsName}
@@ -77,7 +67,7 @@ export function RankingHomeSection() {
           ))}
         </div>
 
-        {/* CENTER Table */}
+        {/* CENTER – table */}
         <div ref={tableRef}>
           <RankingTable
             rows={visibleRows}
