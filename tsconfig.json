@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "components/blocks/Ranking"  ],
   "exclude": ["node_modules"]
 }

@@ -1,10 +1,10 @@
-type TestBarText = {
+type TextBarText = {
   text: string;
   width?: number;
   icon?: boolean;
 };
 
-export function TestBar(props: TestBarText) {
+export function TextBar(props: TextBarText) {
   const widthStyle = props.width ? { width: `${props.width}rem` } : {};
 
   return (

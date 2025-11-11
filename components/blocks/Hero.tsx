@@ -1,4 +1,4 @@
-import { BackgroundFx } from "@/components/blocks/BackgroundFx";
+import { BackgroundFx } from "@/components/core/BackgroundFx";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -25,8 +25,6 @@ export function Hero() {
           <Link href="/explore">Be an artist</Link>
         </Button>
       </div>
-
-
     </section>
   );
 }
