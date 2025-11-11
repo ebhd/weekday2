@@ -1,5 +1,5 @@
 import { Hero } from "@/components/blocks/Hero";
-import { RankingHomeSection } from "@/components/core/Ranking.tsx/RankingHomeSection";
+import { RankingHomeSection } from "@/components/blocks/Ranking/RankingHomeSection";
 
 export default function Home() {
   return (
