@@ -45,7 +45,7 @@ export function RankingTable({ rows, hasMore, onLoadMore }: RankingTableProps) {
       {hasMore && (
         <button
           onClick={onLoadMore}
-          className="w-full h-10 border border-muted-fg rounded-xl flex items-center justify-center font-sans mt-3 hover:bg-white/5 transition shadow-lg shadow-white/50"
+          className="w-full h-10 border border-muted-fg rounded-xl flex items-center justify-center font-sans mt-3 hover:bg-white/5 transition shadow-sm shadow-white/20"
         >
           <p>Load more</p>
         </button>

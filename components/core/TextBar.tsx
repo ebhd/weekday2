@@ -16,7 +16,7 @@ export function TextBar(props: TextBarText) {
         <span className="mx-3 h-2 w-2 rounded-full bg-primary shadow-[0_0_10px_var(--color-primary)]"></span>
       ) : null}
 
-      <p className="text-[0.6rem] lg:text-sm font-light font-sans ">
+      <p className="text-[0.6rem] lg:text-sm font-light font-sans px-2">
         {props.text}
       </p>
     </div>
