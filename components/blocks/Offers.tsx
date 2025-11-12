@@ -24,14 +24,25 @@ function FeatureItem({
     </div>
   );
 }
-function OffersGradient() {
+export function OffersGradient() {
   return (
     <div
       aria-hidden
       className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
     >
-      <div style={{ width: "96rem", height: "58rem", position: "relative" }}>
-        {/* smoother radial gradient with explicit transparent outer stop + mask to force a smooth fade */}
+      {/* wrapper size is responsive: never wider than 96rem, and never wider than the viewport minus 2rem */}
+      <div
+        style={{
+          width: "min(96rem, calc(100vw - 2rem))",
+          // keep the same aspect ratio as your original (58 / 96 ≈ 0.604)
+          height: "min(58rem, calc((100vw - 2rem) * 0.604))",
+          position: "relative",
+          maxWidth: "96rem",
+          maxHeight: "58rem",
+          margin: "0 auto",
+        }}
+      >
+        {/* gradient layer */}
         <div
           style={{
             width: "100%",
@@ -44,18 +55,19 @@ function OffersGradient() {
               "rgba(255,255,255,0.035) 18%, " +
               "rgba(255,255,255,0.02) 35%, " +
               "rgba(255,255,255,0.01) 55%, " +
-              "transparent 95%)", // <-- explicit transparent outer stop
-            // mask ensures the element itself fades to transparent (better cross-browser)
+              "transparent 95%)",
             maskImage:
               "radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)",
             WebkitMaskImage:
               "radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)",
             willChange: "opacity, transform",
+            // slightly reduce blur on very small screens to save perf (optional)
+            filter: "blur(40px)",
           }}
-          className="absolute inset-0 rounded-full blur-4xl opacity-80"
+          className="absolute inset-0 rounded-full opacity-80"
         />
 
-        {/* very subtle noise overlay (keep as-is) */}
+        {/* noise overlay */}
         <div
           style={{
             width: "100%",
