@@ -27,9 +27,10 @@ function FeatureItem({
 export function OffersGradient() {
   return (
     <>
+      {/* MAIN WHITE GLOW */}
       <div
         aria-hidden
-        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
       >
         <div
           style={{
@@ -42,59 +43,27 @@ export function OffersGradient() {
           }}
         >
           <div
+            className="absolute inset-0 rounded-full opacity-20"
             style={{
               width: "100%",
               height: "100%",
-              borderRadius: "9999px",
               background:
-                "radial-gradient(circle at center, " +
-                "rgba(255,255,255,0.06) 0%, " +
-                "rgba(255,255,255,0.055) 5%, " +
-                "rgba(255,255,255,0.05) 10%, " +
-                "rgba(255,255,255,0.045) 15%, " +
-                "rgba(255,255,255,0.04) 20%, " +
-                "rgba(255,255,255,0.035) 25%, " +
-                "rgba(255,255,255,0.03) 30%, " +
-                "rgba(255,255,255,0.025) 35%, " +
-                "rgba(255,255,255,0.02) 40%, " +
-                "rgba(255,255,255,0.0175) 45%, " +
-                "rgba(255,255,255,0.015) 50%, " +
-                "rgba(255,255,255,0.0125) 55%, " +
-                "rgba(255,255,255,0.01) 60%, " +
-                "rgba(255,255,255,0.0075) 65%, " +
-                "rgba(255,255,255,0.005) 70%, " +
-                "rgba(255,255,255,0.0025) 80%, " +
-                "transparent 95%)",
-              maskImage:
-                "radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)",
-              WebkitMaskImage:
-                "radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)",
-              willChange: "opacity, transform",
-              filter: "blur(159px)",
+                "radial-gradient(circle at center," +
+                "rgba(255,255,255,0.10) 0%," +
+                "rgba(255,255,255,0.08) 20%," +
+                "rgba(255,255,255,0.0) 40%," +
+                "rgba(255,255,255,0.02) 60%," +
+                "transparent 80%)",
+              filter: "blur(72px)",
             }}
-            className="absolute inset-0 rounded-full opacity-80 "
-          />
-
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              borderRadius: "9999px",
-              backgroundImage:
-                "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>\")",
-              backgroundRepeat: "repeat",
-              backgroundSize: "220% 220%",
-              mixBlendMode: "normal",
-              opacity: 0.04,
-              pointerEvents: "none",
-            }}
-            className="absolute inset-0 rounded-full"
           />
         </div>
       </div>
+
+      {/* GREEN SIDE GLOW – */}
       <div
         aria-hidden
-        className="hidden lg:block absolute right-[-50%] top-1/2 -translate-y-1/2 pointer-events-none z-0 "
+        className="hidden lg:block absolute right-[-50%] top-1/2 -translate-y-1/2 pointer-events-none z-0"
       >
         <div
           style={{
@@ -102,7 +71,7 @@ export function OffersGradient() {
             height: "25rem",
             borderRadius: "9999px",
             background:
-              "radial-gradient(circle at center, rgba(64,255,80,0.25) 0%, rgba(64,255,80,0.15) 15%, rgba(64,255,80,0.05) 30%, transparent 100%) ",
+              "radial-gradient(circle at center, rgba(64,255,80,0.25) 0%, rgba(64,255,80,0.15) 15%, rgba(64,255,80,0.05) 30%, transparent 100%)",
             filter: "blur(50px)",
           }}
         />
@@ -133,7 +102,7 @@ export function Offers() {
   return (
     <section
       aria-labelledby="offers-heading"
-      className="relative mt-52 flex flex-col lg:flex-row lg:gap-72 items-center"
+      className="relative mt-28 lg:mt-52 flex flex-col lg:flex-row lg:gap-72 items-center"
     >
       <OffersGradient />
 

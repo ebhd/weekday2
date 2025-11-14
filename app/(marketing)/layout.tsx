@@ -16,7 +16,9 @@ export default function MarketingLayout({
   return (
     <div>
       <BackgroundFx />
-      <Navbar />
+      <div className="md:px-48 px-4">
+        <Navbar />
+      </div>
       {children}
     </div>
   );

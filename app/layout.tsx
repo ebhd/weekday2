@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className=" text-white">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} antialiased md:px-48 px-4`}
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased  overflow-x-hidden`}
       >
         {children}
       </body>
