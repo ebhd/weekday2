@@ -19,46 +19,46 @@ interface Faq1Props {
 export const Faq1 = ({
   items = [
     {
-      id: "faq-1",
+      id: "How Can I reset my password?",
       question: "What is a FAQ?",
       answer:
-        "A FAQ is a list of frequently asked questions and answers on a particular topic.",
+        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
     },
     {
       id: "faq-2",
-      question: "What is the purpose of a FAQ?",
+      question: "How Can I reset my password?",
       answer:
-        "The purpose of a FAQ is to provide answers to common questions and help users find the information they need quickly and easily.",
+        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
     },
     {
       id: "faq-3",
-      question: "How do I create a FAQ?",
+      question: "How Can I reset my password?",
       answer:
-        "To create a FAQ, you need to compile a list of common questions and answers on a particular topic and organize them in a clear and easy-to-navigate format.",
+        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
     },
     {
       id: "faq-4",
-      question: "What are the benefits of a FAQ?",
+      question: "How Can I reset my password?",
       answer:
-        "The benefits of a FAQ include providing quick and easy access to information, reducing the number of support requests, and improving the overall user experience.",
+        "To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
     },
     {
       id: "faq-5",
-      question: "How should I organize my FAQ?",
+      question: "How Can I reset my password?",
       answer:
-        "You should organize your FAQ in a logical manner, grouping related questions together and ordering them from most basic to more advanced topics.",
+        "To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
     },
     {
       id: "faq-6",
-      question: "How long should FAQ answers be?",
+      question: "How Can I reset my password?",
       answer:
-        "FAQ answers should be concise and to the point, typically a few sentences or a short paragraph is sufficient for most questions.",
+        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
     },
     {
       id: "faq-7",
-      question: "Should I include links in my FAQ?",
+      question: "How Can I reset my password?",
       answer:
-        "Yes, including links to more detailed information or related resources can be very helpful for users who want to learn more about a particular topic.",
+        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
     },
   ],
 }: Faq1Props) => {
@@ -67,17 +67,17 @@ export const Faq1 = ({
   const rightItems = items.slice(mid);
 
   return (
-    <section className="py-20">
+    <section className="py-20 font-sans">
       <div className="container max-w-5xl">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
           {/* Left column */}
           <Accordion type="single" collapsible className="space-y-2">
             {leftItems.map((item, index) => (
               <AccordionItem key={item.id ?? index} value={item.id}>
-                <AccordionTrigger className="font-semibold hover:no-underline">
+                <AccordionTrigger className="font-medium hover:no-underline">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-muted-foreground font-extralight">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -88,7 +88,7 @@ export const Faq1 = ({
           <Accordion type="single" collapsible className="space-y-2">
             {rightItems.map((item, index) => (
               <AccordionItem key={item.id ?? index} value={item.id}>
-                <AccordionTrigger className="font-semibold hover:no-underline">
+                <AccordionTrigger className="font-medium hover:no-underline">
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">

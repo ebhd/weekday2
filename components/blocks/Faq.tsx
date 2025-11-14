@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Faq1 } from "./Faq/FaqQA";
+import { TextBar } from "../core/TextBar";
+import { Button } from "../ui/button";
 
 // GRADIENT FLOATING AROUND FAQ
 export function Gradient() {
@@ -74,7 +76,6 @@ export function Faq() {
           </div>
         </div>
 
-        {/* centered content on desktop */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-8">
           <h2 className="text-4xl font-display text-center">
             Frequently Asked Questions
@@ -85,6 +86,25 @@ export function Faq() {
           </p>
 
           <Faq1 />
+        </div>
+
+        <div className=" z-10 max-w-5xl mx-auto  mt-10 w-72 lg:w-auto  lg:h-80 rounded-[2rem] lg:rounded-[4rem] border border-muted-fg/50 bg-surface inset-shadow- inset-shadow-black/80 px-4 md:px-8 ">
+          <div className="flex flex-col items-center gap-4 p-4 lg:p-12">
+            <h1 className="lg:text-3xl text-lg font-display text-center">
+              Be an Artist Today!
+            </h1>
+            <p className="text-xs text-center text-muted-fg ">
+              Join Drillrecord and take your first step towards becoming a
+              recognized artist. <br />
+              Upload your tracks, grow your audience, and rise through the
+              ranks.
+            </p>
+            <TextBar
+              text="Be an artist and upload you artwork instantly"
+              icon
+            />
+            <Button>Get Started</Button>
+          </div>
         </div>
       </div>
     </section>
