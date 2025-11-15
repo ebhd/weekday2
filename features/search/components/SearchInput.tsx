@@ -57,7 +57,7 @@ export function SearchInput({
               onMouseDown={(e) => {
                 e.preventDefault();
                 onSelectSuggestion?.(item);
-                setOpen(false); 
+                setOpen(false);
               }}
               className="px-4 py-2 cursor-pointer hover:bg-white/5"
             >
