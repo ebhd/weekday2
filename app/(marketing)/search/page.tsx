@@ -1,5 +1,6 @@
-import { Navbar } from "@/components/core/Navbar";
+import { SearchScreen, getLocalDataset } from "@/features/search";
 
-export default function search() {
-  return <Navbar />;
+export default async function Page() {
+  const dataset = await getLocalDataset();
+  return <SearchScreen dataset={dataset} />;
 }
