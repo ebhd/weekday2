@@ -2,6 +2,7 @@ import "../globals.css";
 import { defaultSEO } from "@/config/seo";
 import { Navbar } from "@/components/core/Navbar";
 import { BackgroundFx } from "@/components/core/BackgroundFx";
+import { Footer } from "@/components/core/Footer";
 
 export const metadata = {
   title: defaultSEO.title,
@@ -20,6 +21,7 @@ export default function MarketingLayout({
         <Navbar />
       </div>
       {children}
+      <Footer />
     </div>
   );
 }

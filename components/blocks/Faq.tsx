@@ -88,7 +88,7 @@ export function Faq() {
           <Faq1 />
         </div>
 
-        <div className=" z-10 max-w-5xl mx-auto  mt-10 w-72 lg:w-auto  lg:h-80 rounded-[2rem] lg:rounded-[4rem] border border-muted-fg/50 bg-surface inset-shadow- inset-shadow-black/80 px-4 md:px-8 ">
+        <div className=" z-10 max-w-5xl mx-auto  mt-10 w-80 lg:w-auto  lg:h-80 rounded-[2rem] lg:rounded-[4rem] border border-muted-fg/50 bg-surface inset-shadow- inset-shadow-black/80 px-2 md:px-8 ">
           <div className="flex flex-col items-center gap-4 p-4 lg:p-12">
             <h1 className="lg:text-3xl text-lg font-display text-center">
               Be an Artist Today!
