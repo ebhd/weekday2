@@ -28,6 +28,7 @@ export function RankingRow(props: RankingRowProps) {
           <span className="truncate text-base lg:text-lg">
             {props.songName}
           </span>
+
           <span className="text-sm text-white/60 truncate text-left">
             {props.artistsName}
           </span>
