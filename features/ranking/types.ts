@@ -7,10 +7,12 @@ export type RankingRowProps = {
   views: number;
   hearts: number;
   isHearted: boolean;
+  link: string;
 };
 
 export type RankingStats = {
   views: number;
   hearts: number;
   isHearted: boolean;
+  link: string;
 };

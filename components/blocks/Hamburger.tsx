@@ -127,7 +127,6 @@ const HamburgerMenuLink: FC<HamburgerMenuLinkProps> = ({ children, href }) => {
   );
 };
 
-// Page Component
 export const HamburgerMenuPage: FC = () => {
   const [open, setOpen] = useState(false);
 

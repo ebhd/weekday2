@@ -4,7 +4,7 @@ import { faEye, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { ArtistCardProps } from "../types";
-
+import Link from "next/link";
 export function ArtistCard(props: ArtistCardProps) {
   return (
     <Card className="w-full max-w-[12rem] overflow-hidden p-0 pt-4 px-5 bg-surface border-2 border-muted-fg/30">
@@ -22,7 +22,14 @@ export function ArtistCard(props: ArtistCardProps) {
       </CardHeader>
 
       <CardContent className="font-display p-0 pb-4">
-        <h1 className="text-xl text-center truncate">{props.name}</h1>
+        {props.link ? (
+          <h1 className="text-xl text-center truncate hover:underline cursor-pointer">
+            <Link href={props.link}>{props.name}</Link>
+          </h1>
+        ) : (
+          <h1 className="text-xl text-center truncate ">{props.name} </h1>
+        )}
+
         <Separator className="my-2" />
         <div className="text-xs flex justify-between">
           <p>

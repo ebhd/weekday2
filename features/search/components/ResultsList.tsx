@@ -1,3 +1,4 @@
+import Link from "next/dist/client/link";
 import type { DatasetItem } from "../types";
 
 export function ResultsList({ items }: { items: DatasetItem[] }) {
@@ -13,8 +14,10 @@ export function ResultsList({ items }: { items: DatasetItem[] }) {
             {row.rank}. {row.artistsName}
           </div>
           <div className="text-muted-fg text-xs sm:text-sm">
-            {row.songName} · {row.views.toLocaleString()} plays ·{" "}
-            {row.hearts.toLocaleString()} likes
+            <Link href={`${row.link}`}>
+              {row.songName} · {row.views.toLocaleString()} plays ·{" "}
+              {row.hearts.toLocaleString()} likes
+            </Link>
           </div>
         </li>
       ))}

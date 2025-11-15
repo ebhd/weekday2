@@ -30,7 +30,7 @@ export function RankingHomeSection() {
   const sideArtists = visibleRows.slice(0, maxSideCards);
   const leftArtists = sideArtists.filter((row) => row.rank % 2 === 1);
   const rightArtists = sideArtists.filter((row) => row.rank % 2 === 0);
-
+  console.log({ maxSideCards, leftArtists, rightArtists });
   return (
     <section className="flex flex-col items-center gap-6">
       <TextBar
@@ -59,6 +59,7 @@ export function RankingHomeSection() {
                 imagePath={row.artistsImagePath ?? "/Charlie Wilson.avif"}
                 views={row.views}
                 hearts={row.hearts}
+                link={row.link}
               />
             </div>
           ))}
@@ -83,6 +84,7 @@ export function RankingHomeSection() {
               imagePath={row.artistsImagePath ?? "/Charlie Wilson.avif"}
               views={row.views}
               hearts={row.hearts}
+              link={row.link}
             />
           ))}
         </div>

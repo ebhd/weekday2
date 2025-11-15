@@ -3,7 +3,6 @@ import { Faq1 } from "./Faq/FaqQA";
 import { TextBar } from "../core/TextBar";
 import { Button } from "../ui/button";
 
-// GRADIENT FLOATING AROUND FAQ
 export function Gradient() {
   return (
     <div
