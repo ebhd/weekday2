@@ -134,16 +134,15 @@ export const HamburgerMenuPage: FC = () => {
     setOpen((prevState) => !prevState);
   };
 
-  // Disable body scroll when the menu is open
   useEffect(() => {
     if (open) {
-      document.body.style.overflowY = "hidden"; // Disable vertical scrolling
+      document.body.style.overflowY = "hidden";
     } else {
-      document.body.style.overflowY = "auto"; // Re-enable vertical scrolling
+      document.body.style.overflowY = "auto";
     }
 
     return () => {
-      document.body.style.overflowY = "auto"; // Cleanup on unmount
+      document.body.style.overflowY = "auto";
     };
   }, [open]);
 

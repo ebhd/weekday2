@@ -1,4 +1,4 @@
-import { SuggestionOptions } from "./types";
+import type { SuggestionOptions } from "./types";
 
 export const normalize = (s: string) => s.toLowerCase().trim();
 

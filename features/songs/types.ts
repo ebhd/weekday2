@@ -1,7 +1,7 @@
 export type SongStats = {
   views: number;
   likes: number;
-  ranking: number;
+  ranking?: number;
 };
 
 export type SongSource = {
@@ -17,7 +17,7 @@ export type Song = {
   audioUrl: string;
   coverUrl?: string;
   sources?: SongSource[];
-  stats: { views: number; likes: number; ranking: number };
+  stats: SongStats;
   hasLyrics?: boolean;
   releasedAt?: string;
   durationSec?: number;

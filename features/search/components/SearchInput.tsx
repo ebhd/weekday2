@@ -32,7 +32,7 @@ export function SearchInput({
             onChange(e.target.value);
             setOpen(true);
           }}
-          onBlur={(e) => {
+          onBlur={() => {
             requestAnimationFrame(() => {
               if (!wrapperRef.current?.contains(document.activeElement)) {
                 setOpen(false);

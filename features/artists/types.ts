@@ -16,7 +16,7 @@ export type ArtistStats = {
 export type Artist = {
   id: string;
   slug: string;
-  name: string;
+  name: string; 
   profile: ArtistProfile;
   stats: ArtistStats;
 };

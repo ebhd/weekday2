@@ -14,15 +14,16 @@ export function useSearch(dataset: DatasetItem[]) {
     if (!hasMinQuery) return [];
     const a = normalize(query.artist);
     const t = normalize(query.track);
+
     return dataset.filter((row) => {
-      const artistHit = a ? normalize(row.artistsName).includes(a) : true;
-      const trackHit = t ? normalize(row.songName).includes(t) : true;
+      const artistHit = a ? normalize(row.artistName).includes(a) : true;
+      const trackHit = t ? normalize(row.songTitle).includes(t) : true;
       return artistHit && trackHit;
     });
   }, [dataset, query, hasMinQuery]);
 
   const artistSuggestions = useMemo(() => {
-    const names = dataset.map((r) => r.artistsName);
+    const names = dataset.map((r) => r.artistName);
     return makeSuggestions(names, query.artist, {
       mode: "startsWith",
       limit: 5,
@@ -30,8 +31,11 @@ export function useSearch(dataset: DatasetItem[]) {
   }, [dataset, query.artist]);
 
   const trackSuggestions = useMemo(() => {
-    const titles = dataset.map((r) => r.songName);
-    return makeSuggestions(titles, query.track, { mode: "includes", limit: 5 });
+    const titles = dataset.map((r) => r.songTitle);
+    return makeSuggestions(titles, query.track, {
+      mode: "includes",
+      limit: 5,
+    });
   }, [dataset, query.track]);
 
   return {

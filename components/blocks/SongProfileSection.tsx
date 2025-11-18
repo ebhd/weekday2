@@ -70,7 +70,21 @@ export function SongProfileSection({
   );
 
   return (
-    <section className="mx-auto w-full max-w-6xl rounded-3xl bg-surface/95 border border-white/10 shadow-lg shadow-black/20 px-5 sm:px-8 lg:px-10 py-6 lg:py-8">
+    <section
+      className="
+    max-w-6xl
+    mx-4
+    lg:mx-auto
+    rounded-3xl
+    bg-surface/95
+    border border-white/10
+    shadow-lg shadow-black/20
+    px-5 sm:px-8 lg:px-10
+    py-6 lg:py-8
+    my-12 lg:my-32
+  "
+    >
+      {" "}
       <div className="flex flex-col gap-5">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-4 min-w-0">
@@ -96,7 +110,7 @@ export function SongProfileSection({
             </div>
           </div>
 
-          <div className="flex-1 min-w-[200px] px-2">
+          <div className="flex-1 lg:min-w-[200px] px-2">
             <SongPlayer />
           </div>
 
@@ -119,7 +133,6 @@ export function SongProfileSection({
           </span>
         </div>
       </div>
-
       <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="rounded-2xl bg-black/30 border border-white/10 px-6 py-5 flex items-center gap-5">
           <FontAwesomeIcon icon={faCrown} className="text-3xl" />

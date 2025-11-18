@@ -1,12 +1,21 @@
+
 export type RankingRowProps = {
   rank: number;
-  artistsName: string;
-  artistsImagePath?: string;
-  songName: string;
-  songPath: string;
+
+  songId: string;
+  songSlug: string;
+  artistId: string;
+  artistSlug: string;
+
+  songTitle: string;
+  audioUrl: string;
+  artistName: string;
+  artistImageUrl?: string;
+
   views: number;
   hearts: number;
   isHearted: boolean;
+
   link: string;
 };
 
@@ -14,4 +23,17 @@ export type RankingStats = {
   views: number;
   hearts: number;
   isHearted: boolean;
+};
+
+export type ArtistRankingRow = {
+  rank: number;
+  artistId: string;
+  artistSlug: string;
+  artistName: string;
+  artistImageUrl?: string;
+
+  totalViews: number; 
+  totalHearts: number;
+
+  link: string; 
 };

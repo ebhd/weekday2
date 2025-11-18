@@ -220,7 +220,7 @@ export function Navbar() {
               variants={liVariant}
               transition={{ duration: 0.3, delay: 0.5, ease: customease }}
               onClick={handleClose}
-              className="text-4xl sm:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#ff6205] to-[#6f44ab]"
+              className="text-4xl sm:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
             >
               <Link href="/explore" className="duration-200">
                 Explore
