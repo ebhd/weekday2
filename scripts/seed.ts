@@ -1,3 +1,4 @@
+// scripts/seed.ts
 import dotenv from "dotenv";
 
 dotenv.config({ path: ".env.local" });
@@ -7,43 +8,54 @@ console.log("Loaded env:", {
   HAS_SERVICE_KEY: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
 });
 
+import { hashPassword } from "../lib/auth/password";
+
 const STORAGE_BASE =
   "https://srfvxpxheavarzaurusd.supabase.co/storage/v1/object/public/drillrecords-assets";
 
+// one shared dev password for all seeded users
+const DEV_PASSWORD = "test1";
+
 async function main() {
+  // import AFTER dotenv so env is available
   const { supabase } = await import("../lib/supabaseClient");
+  // or: const { supabaseAdmin: supabase } = await import("../lib/supabaseAdmin");
 
   console.log("🌱 Seeding DrillRecords data...");
 
+  // hash the dev password once and reuse it
+  const devPasswordHash = await hashPassword(DEV_PASSWORD);
+
+  // 1) USERS
   const users = [
     {
       email: "admin1@drillrecords.test",
       username: "admin_full",
-      password_hash: "dev-hash-only",
+      password_hash: devPasswordHash,
       role: "admin_full" as const,
     },
     {
       email: "admin2@drillrecords.test",
       username: "admin_reviewer",
-      password_hash: "dev-hash-only",
+      password_hash: devPasswordHash,
       role: "admin_reviewer" as const,
     },
     {
       email: "gherbo@drillrecords.test",
       username: "gherbo",
-      password_hash: "dev-hash-only",
+      password_hash: devPasswordHash,
       role: "user" as const,
     },
     {
       email: "rowdy@drillrecords.test",
       username: "rowdy",
-      password_hash: "dev-hash-only",
+      password_hash: devPasswordHash,
       role: "user" as const,
     },
     {
       email: "listener@drillrecords.test",
       username: "listener1",
-      password_hash: "dev-hash-only",
+      password_hash: devPasswordHash,
       role: "user" as const,
     },
   ];
@@ -126,6 +138,7 @@ async function main() {
     process.exit(1);
   }
 
+  // 3) SONGS
   const nowIso = new Date().toISOString();
   const audioUrl = `${STORAGE_BASE}/songs/testsong.mp3`;
 
@@ -165,8 +178,8 @@ async function main() {
     {
       artist_id: gHerboArtist.id,
       title: "No Sleep In The Trenches",
-      slug: "no-sleep-in-the-trenches", // unique because of onConflict: "slug"
-      audio_url: audioUrl, // same audio source
+      slug: "no-sleep-in-the-trenches",
+      audio_url: audioUrl,
       cover_url: `${STORAGE_BASE}/covers/cover.png`,
       duration_sec: 195,
       has_lyrics: true,

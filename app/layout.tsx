@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { getCurrentUser } from "@/lib/auth/currentUser";
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -23,11 +24,12 @@ export const metadata: Metadata = {
   description: "A app to record and track your drilling practice sessions.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await getCurrentUser();
   return (
     <html lang="en" className=" text-white">
       <body
