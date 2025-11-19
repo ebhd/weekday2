@@ -7,3 +7,18 @@ export type User = {
   role: UserRole;
   createdAt: string;
 };
+
+export type AuthUser = {
+  id: string;
+  email: string;
+  role: UserRole;
+};
+
+export type UserRow = {
+  id: string;
+  email: string;
+  username: string | null;
+  password_hash: string;
+  role: UserRole;
+  created_at: string;
+};

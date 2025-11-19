@@ -1,7 +1,6 @@
-// middleware.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { routes } from "@/config/routes";
+
 import { verifyAccessToken } from "@/lib/auth/token";
 
 const PROTECTED_PREFIXES = ["/dashboard", "/admin"];

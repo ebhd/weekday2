@@ -1,6 +1,6 @@
 import "../globals.css";
 import { defaultSEO } from "@/config/seo";
-import { Navbar } from "@/components/core/Navbar";
+import { Navbar } from "@/components/core/Navbar/Navbar";
 import { BackgroundFx } from "@/components/core/BackgroundFx";
 import { Footer } from "@/components/core/Footer";
 
@@ -9,7 +9,7 @@ export const metadata = {
   description: defaultSEO.description,
 };
 
-export default function MarketingLayout({
+export default async function MarketingLayout({
   children,
 }: {
   children: React.ReactNode;

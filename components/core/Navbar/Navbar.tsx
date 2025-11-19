@@ -4,65 +4,53 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Squash as Hamburger } from "hamburger-react";
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useMediaQuery } from "react-responsive";
+import { useAuthStore } from "@/features/auth/store";
+import { useNavbarUiState, customEase } from "./useNavbarUiState";
+import { useRouter } from "next/navigation";
+import {
+  isAdmin,
+  isArtist,
+  isRegularUser,
+  isLoggedIn,
+} from "@/features/auth/roles";
 
 export function Navbar() {
-  const [openMobileNav, setOpenMobileNav] = useState(false);
-  const customease: [number, number, number, number] = [0.05, 0.58, 0.57, 0.96];
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const user = useAuthStore((s) => s.user);
+  const logout = useAuthStore((s) => s.logout);
+  const router = useRouter();
 
-  useEffect(() => {
-    if (!isMobile) setOpenMobileNav(false);
-  }, [isMobile]);
+  const loggedIn = isLoggedIn(user);
+  const admin = isAdmin(user?.role);
+  const profileUser = loggedIn && !admin;
 
-  useEffect(() => {
-    document.body.style.overflowY = openMobileNav ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflowY = "auto";
-    };
-  }, [openMobileNav]);
+  let primaryHref = "/explore";
+  let primaryLabel = "Explore";
 
-  const hrVariant = {
-    initial: {
-      width: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: customease },
-    },
-    animate: {
-      width: "100%",
-      opacity: 1,
-      transition: { duration: 0.5, ease: customease },
-    },
-    exit: {
-      width: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: customease },
-    },
+  if (loggedIn) {
+    if (admin) {
+      primaryHref = "/dashboard";
+      primaryLabel = "Dashboard";
+    } else {
+      primaryHref = "/profile";
+      primaryLabel = "Profile";
+    }
+  }
+
+  const {
+    openMobileNav,
+    setOpenMobileNav,
+    handleClose,
+    hrVariant,
+    liVariant,
+    navVariant,
+  } = useNavbarUiState();
+
+  const handleLogout = async () => {
+    await logout();
+    router.push("/");
+    router.refresh();
   };
-
-  const liVariant = {
-    initial: { y: 50, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { y: 50, opacity: 0 },
-  };
-
-  const navVariant = {
-    initial: { opacity: 0, scale: 1.1 },
-    animate: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.2, ease: customease },
-    },
-    exit: {
-      opacity: 0,
-      scale: 1.1,
-      transition: { duration: 0.2, delay: 0.3, ease: customease },
-    },
-  };
-
-  const handleClose = () => setOpenMobileNav(false);
 
   return (
     <>
@@ -109,11 +97,23 @@ export function Navbar() {
 
         {/* --- Desktop Buttons --- */}
         <div className="hidden md:flex">
-          <Button size="lg" variant="ghost" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
+          {user ? (
+            <Button
+              className="cursor-pointer"
+              size="lg"
+              variant="ghost"
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          ) : (
+            <Button size="lg" variant="ghost" asChild>
+              <Link href="/login">Login</Link>
+            </Button>
+          )}
+
           <Button size="lg" variant="default" asChild>
-            <Link href="/explore">Explore</Link>
+            <Link href={primaryHref}>{primaryLabel}</Link>
           </Button>
         </div>
 
@@ -155,7 +155,7 @@ export function Navbar() {
             {/* Home */}
             <motion.div
               variants={liVariant}
-              transition={{ duration: 0.3, delay: 0.1, ease: customease }}
+              transition={{ duration: 0.3, delay: 0.1, ease: customEase }}
               onClick={handleClose}
               className="text-4xl sm:text-5xl font-semibold"
             >
@@ -170,7 +170,7 @@ export function Navbar() {
 
             <motion.div
               variants={liVariant}
-              transition={{ duration: 0.3, delay: 0.2, ease: customease }}
+              transition={{ duration: 0.3, delay: 0.2, ease: customEase }}
               onClick={handleClose}
               className="text-4xl sm:text-5xl font-semibold"
             >
@@ -186,7 +186,7 @@ export function Navbar() {
             {/* About us */}
             <motion.div
               variants={liVariant}
-              transition={{ duration: 0.3, delay: 0.3, ease: customease }}
+              transition={{ duration: 0.3, delay: 0.3, ease: customEase }}
               onClick={handleClose}
               className="text-4xl sm:text-5xl font-semibold"
             >
@@ -202,28 +202,42 @@ export function Navbar() {
             {/* Login */}
             <motion.div
               variants={liVariant}
-              transition={{ duration: 0.3, delay: 0.4, ease: customease }}
-              onClick={handleClose}
+              transition={{ duration: 0.3, delay: 0.4, ease: customEase }}
               className="text-4xl sm:text-5xl font-semibold"
             >
-              <Link href="/login" className="hover:text-gray-300 duration-200">
-                Login
-              </Link>
+              {loggedIn ? (
+                <button
+                  onClick={async () => {
+                    await handleLogout();
+                    handleClose();
+                  }}
+                  className="hover:text-gray-300 duration-200"
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link
+                  href="/login"
+                  onClick={handleClose}
+                  className="hover:text-gray-300 duration-200"
+                >
+                  Login
+                </Link>
+              )}
               <motion.hr
                 variants={hrVariant}
                 className="bg-gray-600 h-px w-full mt-2"
               />
             </motion.div>
 
-            {/* Explore */}
             <motion.div
               variants={liVariant}
-              transition={{ duration: 0.3, delay: 0.5, ease: customease }}
+              transition={{ duration: 0.3, delay: 0.5, ease: customEase }}
               onClick={handleClose}
               className="text-4xl sm:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
             >
-              <Link href="/explore" className="duration-200">
-                Explore
+              <Link href={primaryHref} className="duration-200">
+                {primaryLabel}
               </Link>
               <motion.hr
                 variants={hrVariant}

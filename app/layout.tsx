@@ -3,7 +3,10 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+
 import { getCurrentUser } from "@/lib/auth/currentUser";
+import { AuthHydrator } from "@/features/auth/AuthHydrator";
+
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -35,6 +38,7 @@ export default async function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased  overflow-x-hidden`}
       >
+        <AuthHydrator user={user} />
         {children}
       </body>
     </html>

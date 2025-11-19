@@ -1,15 +1,6 @@
 // features/auth/server.ts
 import { supabase } from "@/lib/supabaseClient";
-import type { User, UserRole } from "./types";
-
-type UserRow = {
-  id: string;
-  email: string;
-  username: string | null;
-  password_hash: string;
-  role: UserRole;
-  created_at: string;
-};
+import type { User, UserRole, UserRow } from "./types";
 
 function mapUser(row: UserRow): User {
   return {
