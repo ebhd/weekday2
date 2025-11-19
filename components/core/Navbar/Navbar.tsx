@@ -22,16 +22,20 @@ export function Navbar() {
 
   const loggedIn = isLoggedIn(user);
   const admin = isAdmin(user?.role);
-  const profileUser = loggedIn && !admin;
+  const artist = isArtist(user?.role);
+  const regularUser = isRegularUser(user?.role);
 
   let primaryHref = "/explore";
   let primaryLabel = "Explore";
 
   if (loggedIn) {
     if (admin) {
-      primaryHref = "/dashboard";
+      primaryHref = "/admin";
       primaryLabel = "Dashboard";
-    } else {
+    } else if (artist) {
+      primaryHref = "/profile";
+      primaryLabel = "Profile";
+    } else if (regularUser) {
       primaryHref = "/profile";
       primaryLabel = "Profile";
     }
