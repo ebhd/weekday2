@@ -2,20 +2,11 @@
 
 import * as React from "react";
 import {
-  IconCamera,
-  IconChartBar,
   IconDashboard,
-  IconDatabase,
-  IconFileAi,
   IconFileDescription,
   IconFileWord,
-  IconFolder,
-  IconHelp,
-  IconInnerShadowTop,
   IconListDetails,
   IconReport,
-  IconSearch,
-  IconSettings,
   IconUsers,
 } from "@tabler/icons-react";
 
@@ -56,52 +47,11 @@ const data = {
       icon: IconUsers,
     },
   ],
-  navClouds: [
+  navSubmits: [
     {
-      title: "Capture",
-      icon: IconCamera,
-      isActive: true,
+      title: "Submits ",
       url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
       icon: IconFileDescription,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: IconFileAi,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
     },
   ],
 
@@ -144,6 +94,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
+      </SidebarContent>
+      <SidebarContent>
+        <NavMain items={data.navSubmits} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
