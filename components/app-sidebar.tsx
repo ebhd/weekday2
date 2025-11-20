@@ -26,45 +26,30 @@ import Link from "next/dist/client/link";
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "Napeleon",
+    email: "hdida@gmail.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/admin/dashboard",
       icon: IconDashboard,
     },
     {
       title: "Data Tables",
-      url: "#",
+      url: "/admin/tables",
       icon: IconListDetails,
     },
     {
       title: "Team",
-      url: "#",
+      url: "/admin/team",
       icon: IconUsers,
     },
-  ],
-  navSubmits: [
     {
-      title: "Submits ",
-      url: "#",
+      title: "Submits",
+      url: "/admin/submits",
       icon: IconFileDescription,
-    },
-  ],
-
-  documents: [
-    {
-      name: "Tickets",
-      url: "#",
-      icon: IconReport,
-    },
-    {
-      name: "Music Submits",
-      url: "#",
-      icon: IconFileWord,
     },
   ],
 };
@@ -92,12 +77,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
-        <NavMain items={data.navMain} />
+      <SidebarContent className="py-8">
+        <NavMain items={data.navMain} catTitle={"Dashboard"} />
       </SidebarContent>
-      <SidebarContent>
-        <NavMain items={data.navSubmits} />
-      </SidebarContent>
+
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>
