@@ -16,7 +16,6 @@ export default async function DashboardLayout({
   if (!user) {
     redirect("/login?returnTo=/dashboard");
   }
-  console.log("user role:", user.role);
 
   const navItems = getDashboardNav(user.role);
 

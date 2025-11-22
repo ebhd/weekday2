@@ -1,5 +1,5 @@
-// features/profile/schemas.ts
 import { z } from "zod";
+const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export const zUserProfileUpdateBody = z.object({
   username: z.string().min(3).max(32).optional(),
@@ -10,11 +10,6 @@ export const zPasswordUpdateBody = z.object({
   newPassword: z.string().min(8).max(72),
 });
 
-// --------------------
-// Artist profile schemas
-// --------------------
-
-// kebab-case slug, short, no spaces, no weird chars
 export const zArtistSlug = z
   .string()
   .min(3)
@@ -30,3 +25,17 @@ export const zArtistProfileUpdateBody = z.object({
   bio: z.string().max(600).nullable().optional(),
   socials: z.record(z.string(), z.url()).nullable().optional(),
 });
+
+export const zBeArtistBody = z.object({
+  slug: z
+    .string()
+    .trim()
+    .min(3)
+    .max(40)
+    .regex(slugRegex, "Slug must be kebab-case (letters, numbers, hyphens)"),
+  displayName: z.string().trim().min(2).max(64),
+  bio: z.string().trim().max(600).nullable().optional(),
+  socials: z.record(z.string(), z.url()).nullable().optional(),
+});
+
+export type BeArtistBody = z.infer<typeof zBeArtistBody>;

@@ -138,7 +138,6 @@ async function main() {
     process.exit(1);
   }
 
-  // 3) SONGS
   const nowIso = new Date().toISOString();
   const audioUrl = `${STORAGE_BASE}/songs/testsong.mp3`;
 

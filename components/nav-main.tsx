@@ -46,7 +46,7 @@ export function NavMain({
   }[];
   catTitle: string;
 }) {
-  console.log(items);
+
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">

@@ -19,46 +19,57 @@ interface Faq1Props {
 export const Faq1 = ({
   items = [
     {
-      id: "How Can I reset my password?",
-      question: "What is a FAQ?",
+      id: "what-is-drillrecords",
+      question: "What is DrillRecords?",
       answer:
-        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
+        "A music platform where artists upload songs and listeners discover new tracks.",
     },
     {
-      id: "faq-2",
-      question: "How Can I reset my password?",
-      answer:
-        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
+      id: "create-account",
+      question: "How do I create an account?",
+      answer: "Click Sign Up, fill your details, and confirm your email.",
     },
     {
-      id: "faq-3",
-      question: "How Can I reset my password?",
+      id: "reset-password",
+      question: "How can I reset my password?",
       answer:
-        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
+        "On the login page click “Forgot Password” and follow the email link.",
     },
     {
-      id: "faq-4",
-      question: "How Can I reset my password?",
-      answer:
-        "To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
+      id: "become-artist",
+      question: "How do I become an artist?",
+      answer: "Go to Profile → “Become an Artist” and complete the setup.",
     },
     {
-      id: "faq-5",
-      question: "How Can I reset my password?",
+      id: "upload-song",
+      question: "How do I upload a song?",
       answer:
-        "To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
+        "Dashboard → My Songs → Upload Song, add a title and select your file.",
     },
     {
-      id: "faq-6",
-      question: "How Can I reset my password?",
-      answer:
-        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
+      id: "song-requirements",
+      question: "What audio files are allowed?",
+      answer: "mp3, m4a, wav, ogg. Max size is 15MB per song.",
     },
     {
-      id: "faq-7",
-      question: "How Can I reset my password?",
-      answer:
-        " To reset your password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password via email.",
+      id: "pending-review",
+      question: "Why is my song pending?",
+      answer: "Uploads are reviewed before going public.",
+    },
+    {
+      id: "edit-delete-song",
+      question: "Can I edit or delete my song?",
+      answer: "Yes, from My Songs you can update title or delete it.",
+    },
+    {
+      id: "copyright",
+      question: "Can I upload copyrighted music?",
+      answer: "No. Only upload music you own or have permission to share.",
+    },
+    {
+      id: "support",
+      question: "How do I contact support?",
+      answer: "Use the Help/Contact page to send us a message.",
     },
   ],
 }: Faq1Props) => {
