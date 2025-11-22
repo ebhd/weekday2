@@ -10,8 +10,8 @@ import {
   faBookOpen,
   faDownload,
   faEye,
-  faHeart, // small heart in stats row
-  faHeart as faHeartSolid, // solid heart for toggle button
+  faHeart,
+  faHeart as faHeartSolid,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
@@ -38,22 +38,17 @@ export function SongProfileSection({
   const router = useRouter();
   const pathname = usePathname();
 
-  // DB reactions for this song (logged-in only in your hook)
   const reactionsMap = useSongReactions([song.id]);
 
-  // server counts (start from SSR value)
   const [serverHearts, setServerHearts] = useState(song.stats.likes ?? 0);
   const [serverDislikes, setServerDislikes] = useState(0);
 
-  // optimistic override for this song
   const [optimistic, setOptimistic] = useState<
     Record<string, ReactionType | null | undefined>
   >({});
 
-  // prevent spam clicks / race conditions
   const [isMutating, setIsMutating] = useState(false);
 
-  // clear optimistic if user changes
   useEffect(() => {
     setOptimistic({});
   }, [user?.id]);
@@ -67,14 +62,12 @@ export function SongProfileSection({
   const dbLiked = dbReaction === "like";
   const effectiveLiked = effectiveReaction === "like";
 
-  // displayed hearts with instant +/-1 adjustment
   const displayedHearts =
     (serverHearts ?? 0) + (effectiveLiked ? 1 : 0) - (dbLiked ? 1 : 0);
 
   async function toggleHeart() {
     if (isMutating) return;
 
-    // 1) not logged in -> redirect to login
     if (!user) {
       router.push(`/login?returnTo=${encodeURIComponent(pathname)}`);
       return;
@@ -83,7 +76,6 @@ export function SongProfileSection({
     const prev = effectiveReaction;
     const next: ReactionType | null = prev === "like" ? null : "like";
 
-    // 2) optimistic UI
     setOptimistic((m) => ({ ...m, [song.id]: next }));
     setIsMutating(true);
 
@@ -98,7 +90,6 @@ export function SongProfileSection({
       const data: ReactionResponse = await res.json();
       if (!res.ok) throw new Error((data as any)?.error ?? "Failed to react");
 
-      // 3) sync counts + reaction from DB truth
       setServerHearts(data.likeCount ?? serverHearts);
       setServerDislikes(data.dislikeCount ?? serverDislikes);
 
@@ -108,7 +99,6 @@ export function SongProfileSection({
       }));
     } catch (e) {
       console.error("toggleHeart error", e);
-      // rollback optimistic
       setOptimistic((m) => ({ ...m, [song.id]: prev }));
     } finally {
       setIsMutating(false);
@@ -162,10 +152,9 @@ export function SongProfileSection({
           </div>
 
           <div className="flex-1 lg:min-w-[200px] px-2">
-            <SongPlayer />
+            <SongPlayer url={song.audioUrl} />
           </div>
 
-          {/* -------- Heart toggle (FontAwesome like RankingTable) -------- */}
           <button
             onClick={toggleHeart}
             aria-label={effectiveLiked ? "Unlike song" : "Like song"}

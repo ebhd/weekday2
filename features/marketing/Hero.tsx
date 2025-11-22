@@ -22,7 +22,7 @@ export function Hero() {
           <Link href="/explore">Explore ranking</Link>
         </Button>
         <Button size="lg" variant="outline" asChild>
-          <Link href="/explore">Be an artist</Link>
+          <Link href="/register">Create an accounts</Link>
         </Button>
       </div>
     </section>

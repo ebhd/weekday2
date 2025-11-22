@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { AppSidebar } from "@/components/app-sidebar/app-sidebar";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 import { getDashboardNav } from "@/features/profile/nav";
+import { getArtistProfileByUserId } from "@/features/profile/server/artists";
 
 export const revalidate = 0;
 
@@ -14,9 +15,12 @@ export default async function DashboardLayout({
 }) {
   const user = await getCurrentUser();
   if (!user) {
-    redirect("/login?returnTo=/dashboard");
+    redirect("/login?returnTo=/profile");
   }
-
+  let artist = null;
+  if (user.role === "artist") {
+    artist = await getArtistProfileByUserId(user.id);
+  }
   const navItems = getDashboardNav(user.role);
 
   return (
@@ -36,7 +40,7 @@ export default async function DashboardLayout({
           user={{
             name: user.email.split("@")[0],
             email: user.email,
-            avatar: "/default-avatar.png",
+            avatar: artist?.avatarUrl || "/avatars/shadcn.jpg",
           }}
         />
 

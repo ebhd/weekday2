@@ -27,7 +27,7 @@ export function RankingTable({
 }: RankingTableProps) {
   return (
     <div>
-      <div className="rounded-2xl text-white bg-linear-to-b from-accent/40 to-secondary/30 border border-muted-fg backdrop-blur-md shadow-lg shadow-black/20 overflow-hidden font-sans">
+      <div id="ranking-table" className="rounded-2xl text-white bg-linear-to-b from-accent/40 to-secondary/30 border border-muted-fg backdrop-blur-md shadow-lg shadow-black/20 overflow-hidden font-sans">
         {/* HEADER */}
         <div
           className={`${rankingDesktopGrid} ${rankingMobileGrid} px-4 lg:px-8 py-4 text-sm text-white/60 bg-black/20`}

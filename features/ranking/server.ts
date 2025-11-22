@@ -21,7 +21,7 @@ export async function getRankingRows(limit = 200): Promise<RankingRowProps[]> {
       play_count,
       like_count,
       score,
-      artists:artist_id (
+      artists:artist_id!inner (
         id,
         slug,
         display_name,
@@ -30,6 +30,7 @@ export async function getRankingRows(limit = 200): Promise<RankingRowProps[]> {
     `
     )
     .eq("status", "approved")
+    .eq("artists.status", "approved")
     .order("score", { ascending: false })
     .limit(limit);
 
@@ -58,7 +59,7 @@ export async function getRankingRows(limit = 200): Promise<RankingRowProps[]> {
 
     views: row.play_count ?? 0,
     hearts: row.like_count ?? 0,
-    isHearted: false, 
+    isHearted: false,
 
     link: `/songs/${row.slug}`,
   }));
@@ -75,7 +76,7 @@ export async function getTopArtistsRanking(
       play_count,
       like_count,
       score,
-      artists:artist_id (
+      artists:artist_id!inner (
         id,
         slug,
         display_name,
@@ -83,7 +84,8 @@ export async function getTopArtistsRanking(
       )
     `
     )
-    .eq("status", "approved");
+    .eq("status", "approved")
+    .eq("artists.status", "approved");
 
   if (error) {
     console.error("getTopArtistsRanking error", error);
