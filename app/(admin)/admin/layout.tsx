@@ -1,21 +1,26 @@
-import { AppSidebar } from "@/components/app-sidebar";
-import { SiteHeader } from "@/components/site-header";
+import { redirect } from "next/navigation";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { SiteHeader } from "@/components/site-header";
+import { AppSidebar } from "@/components/app-sidebar/app-sidebar";
+import { getCurrentUser } from "@/lib/auth/currentUser";
+import { getAdminNav } from "@/features/profile/nav";
 
-import { defaultSEO } from "@/config/seo";
+export const revalidate = 0;
 
-export const metadata = {
-  title: defaultSEO.title,
-  description: defaultSEO.description,
-};
-
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const user = await getCurrentUser();
+  if (!user || !user.role.startsWith("admin")) {
+    redirect("/login?returnTo=/admin");
+  }
+
+  const navItems = getAdminNav();
+
   return (
-    <div>
+    <div className="font-sans">
       <SidebarProvider
         style={
           {
@@ -24,7 +29,17 @@ export default function AdminLayout({
           } as React.CSSProperties
         }
       >
-        <AppSidebar variant="inset" />
+        <AppSidebar
+          variant="inset"
+          navItems={navItems}
+          catTitle="Admin"
+          user={{
+            name: user.email.split("@")[0],
+            email: user.email,
+            avatar: "/avatars/shadcn.jpg",
+          }}
+        />
+
         <SidebarInset>
           <SiteHeader />
           <div className="flex flex-1 flex-col">

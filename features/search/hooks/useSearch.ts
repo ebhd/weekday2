@@ -2,13 +2,20 @@
 
 import { useMemo, useState } from "react";
 import type { DatasetItem, SearchQuery, SearchResult } from "../types";
-import { makeSuggestions, normalize } from "../utils";
+import { makeSuggestions, normalize, uniqueStrings } from "../utils";
 
 export function useSearch(dataset: DatasetItem[]) {
   const [query, setQuery] = useState<SearchQuery>({ artist: "", track: "" });
 
   const hasMinQuery =
     query.artist.trim().length >= 2 || query.track.trim().length >= 2;
+
+  const { artistNames, songTitles } = useMemo(() => {
+    return {
+      artistNames: uniqueStrings(dataset.map((r) => r.artistName)),
+      songTitles: uniqueStrings(dataset.map((r) => r.songTitle)),
+    };
+  }, [dataset]);
 
   const results: SearchResult = useMemo(() => {
     if (!hasMinQuery) return [];
@@ -22,21 +29,23 @@ export function useSearch(dataset: DatasetItem[]) {
     });
   }, [dataset, query, hasMinQuery]);
 
-  const artistSuggestions = useMemo(() => {
-    const names = dataset.map((r) => r.artistName);
-    return makeSuggestions(names, query.artist, {
-      mode: "startsWith",
-      limit: 5,
-    });
-  }, [dataset, query.artist]);
+  const artistSuggestions = useMemo(
+    () =>
+      makeSuggestions(artistNames, query.artist, {
+        mode: "startsWith",
+        limit: 5,
+      }),
+    [artistNames, query.artist]
+  );
 
-  const trackSuggestions = useMemo(() => {
-    const titles = dataset.map((r) => r.songTitle);
-    return makeSuggestions(titles, query.track, {
-      mode: "includes",
-      limit: 5,
-    });
-  }, [dataset, query.track]);
+  const trackSuggestions = useMemo(
+    () =>
+      makeSuggestions(songTitles, query.track, {
+        mode: "includes",
+        limit: 5,
+      }),
+    [songTitles, query.track]
+  );
 
   return {
     query,

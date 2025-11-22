@@ -1,4 +1,3 @@
-
 export type RankingRowProps = {
   rank: number;
 
@@ -32,8 +31,8 @@ export type ArtistRankingRow = {
   artistName: string;
   artistImageUrl?: string;
 
-  totalViews: number; 
+  totalViews: number;
   totalHearts: number;
 
-  link: string; 
+  link: string;
 };

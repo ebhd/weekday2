@@ -2,7 +2,18 @@ import type { SuggestionOptions } from "./types";
 
 export const normalize = (s: string) => s.toLowerCase().trim();
 
-export const unique = <T>(arr: T[]) => Array.from(new Set(arr));
+/** case-insensitive unique */
+export function uniqueStrings(arr: string[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const x of arr) {
+    const n = normalize(x);
+    if (seen.has(n)) continue;
+    seen.add(n);
+    out.push(x);
+  }
+  return out;
+}
 
 export function makeSuggestions(
   source: string[],
@@ -19,5 +30,5 @@ export function makeSuggestions(
       ? (x: string) => normalize(x).startsWith(n)
       : (x: string) => normalize(x).includes(n);
 
-  return unique(source).filter(match).slice(0, limit);
+  return uniqueStrings(source).filter(match).slice(0, limit);
 }

@@ -41,13 +41,13 @@ async function main() {
       role: "admin_reviewer" as const,
     },
     {
-      email: "gherbo@drillrecords.test",
+      email: "gherbo@drillrecords.test", // 1 en 4
       username: "gherbo",
       password_hash: devPasswordHash,
       role: "user" as const,
     },
     {
-      email: "rowdy@drillrecords.test",
+      email: "rowdy@drillrecords.test", // 1 en 2
       username: "rowdy",
       password_hash: devPasswordHash,
       role: "user" as const,

@@ -2,10 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { SongPlayer } from "./SongPlayer";
 import { RankingStat } from "./RankingStat";
+
 import type { RankingRowProps } from "../../types";
 import { rankingDesktopGrid, rankingMobileGrid } from "../RankingTable";
 
-export function RankingRow(props: RankingRowProps) {
+type Props = RankingRowProps & {
+  onToggleHeart?: (songId: string) => void;
+};
+
+export function RankingRow(props: Props) {
   return (
     <div
       className={`
@@ -18,7 +23,7 @@ export function RankingRow(props: RankingRowProps) {
         {props.rank}.
       </div>
 
-      <div className="flex flex-row lg:flex-row items-center gap-3 justify-start w-full lg:pl-20 text-center lg:text-left">
+      <div className="flex items-center gap-3 justify-start w-full lg:pl-20 min-w-0">
         <Image
           src={props.artistImageUrl || "/default-avatar.png"}
           alt={props.artistName}
@@ -28,29 +33,29 @@ export function RankingRow(props: RankingRowProps) {
         />
         <div className="flex flex-col min-w-0">
           <Link href={`/songs/${props.songSlug}`}>
-            <span className=" text-base truncate lg:text-lg hover:underline">
+            <span className="text-base truncate lg:text-lg hover:underline">
               {props.songTitle}
             </span>
           </Link>
           <Link href={`/artists/${props.artistSlug}`}>
-            <span className="text-sm text-white/60 truncate text-left hover:underline">
+            <span className="text-sm text-white/60 truncate hover:underline">
               {props.artistName}
             </span>
           </Link>
         </div>
       </div>
 
-      {/* Song Player */}
       <div className="w-full max-w-full justify-center lg:max-w-[380px]">
-        <SongPlayer />
+        <SongPlayer url={props.audioUrl} />
       </div>
 
-      {/* Stats */}
       <div className="flex items-center justify-end gap-3">
         <RankingStat
+          songId={props.songId}
           views={props.views}
           hearts={props.hearts}
           isHearted={props.isHearted}
+          onToggleHeart={props.onToggleHeart}
         />
       </div>
     </div>

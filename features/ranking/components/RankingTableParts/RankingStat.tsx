@@ -1,30 +1,46 @@
 "use client";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
   faHeart as faHeartSolid,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
-import { RankingStats } from "../../types";
-import { useState } from "react";
 
-export function RankingStat(props: RankingStats) {
-  const [isHearted, setIsHearted] = useState(props.isHearted);
+type RankingStatProps = {
+  songId: string;
+  views: number;
+  hearts: number;
+  isHearted: boolean;
+  onToggleHeart?: (songId: string) => void;
+};
 
+export function RankingStat({
+  songId,
+  views,
+  hearts,
+  isHearted,
+  onToggleHeart,
+}: RankingStatProps) {
   return (
     <>
       <div className="flex flex-col gap-1 text-white/60 text-xs text-left">
         <div className="flex items-center gap-1">
           <FontAwesomeIcon icon={faEye} />
-          <span>{props.views}</span>
+          <span>{views.toLocaleString()}</span>
         </div>
+
         <div className="flex items-center gap-1">
           <FontAwesomeIcon icon={faHeartSolid} />
-          <span>{props.hearts}</span>
+          <span>{hearts.toLocaleString()}</span>
         </div>
       </div>
 
-      <button onClick={() => setIsHearted(!isHearted)}>
+      <button
+        onClick={() => onToggleHeart?.(songId)}
+        aria-label={isHearted ? "Unlike song" : "Like song"}
+        className="ml-1"
+      >
         {isHearted ? (
           <FontAwesomeIcon
             icon={faHeartSolid}

@@ -40,11 +40,11 @@ export function LoginForm({
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
         credentials: "include",
+        body: JSON.stringify({ email: email.trim(), password }),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
         setError(data.error ?? "Login failed.");
@@ -57,6 +57,8 @@ export function LoginForm({
     } catch (err) {
       console.error("login error", err);
       setError("Something went wrong. Please try again.");
+      setLoading(false);
+    } finally {
       setLoading(false);
     }
   }

@@ -4,9 +4,10 @@ import { zLoginBody } from "@/features/auth/schemas";
 import { findUserByEmail } from "@/features/auth/server";
 import { verifyPassword } from "@/lib/auth/password";
 import { signAccessToken, signRefreshToken } from "@/lib/auth/token";
+import { setAuthCookies } from "../_utils";
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  const body = await req.json().catch(() => null);
   const parsed = zLoginBody.safeParse(body);
 
   if (!parsed.success) {
@@ -32,20 +33,6 @@ export async function POST(req: Request) {
   const refreshToken = signRefreshToken(payload);
 
   const res = NextResponse.json({ user });
-
-  res.cookies.set("dr_access_token", accessToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-  });
-
-  res.cookies.set("dr_refresh_token", refreshToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/api/auth",
-  });
-
+  setAuthCookies(res, accessToken, refreshToken);
   return res;
 }

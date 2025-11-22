@@ -9,11 +9,18 @@ export type SongSource = {
   url: string;
 };
 
+export type SongArtistPreview = {
+  id: string;
+  slug: string;
+  name: string;
+  avatarUrl?: string;
+};
+
 export type Song = {
   id: string;
   slug: string;
   title: string;
-  artist: { id: string; slug: string; name: string; avatarUrl?: string };
+  artist: SongArtistPreview;
   audioUrl: string;
   coverUrl?: string;
   sources?: SongSource[];

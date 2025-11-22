@@ -9,7 +9,7 @@ export function AuthHydrator({ user }: { user: AuthUser | null }) {
 
   useEffect(() => {
     setUser(user);
-  }, [user, setUser]);
+  }, [user?.id, user?.email, user?.role, setUser]);
 
   return null;
 }

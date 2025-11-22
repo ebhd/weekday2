@@ -1,4 +1,7 @@
+// features/auth/roles.ts
 import type { AuthUser, UserRole } from "./types";
+
+export const ADMIN_ROLES: UserRole[] = ["admin_full", "admin_reviewer"];
 
 export function isAdmin(role: UserRole | undefined): boolean {
   return role === "admin_full" || role === "admin_reviewer";

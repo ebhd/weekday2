@@ -1,12 +1,17 @@
-// app/api/auth/register/route.ts
+import "server-only";
 import { NextResponse } from "next/server";
 import { zRegisterBody } from "@/features/auth/schemas";
-import { createUser, findUserByEmail } from "@/features/auth/server";
+import {
+  createUser,
+  findUserByEmail,
+  findUserByUsername,
+} from "@/features/auth/server";
 import { hashPassword } from "@/lib/auth/password";
 import { signAccessToken, signRefreshToken } from "@/lib/auth/token";
+import { setAuthCookies } from "../_utils";
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  const body = await req.json().catch(() => null);
   const parsed = zRegisterBody.safeParse(body);
 
   if (!parsed.success) {
@@ -26,6 +31,14 @@ export async function POST(req: Request) {
     );
   }
 
+  const existingUsername = await findUserByUsername(username);
+  if (existingUsername) {
+    return NextResponse.json(
+      { error: "Username already in use" },
+      { status: 409 }
+    );
+  }
+
   const passwordHash = await hashPassword(password);
   const user = await createUser({ email, username, passwordHash });
 
@@ -34,20 +47,6 @@ export async function POST(req: Request) {
   const refreshToken = signRefreshToken(payload);
 
   const res = NextResponse.json({ user });
-
-  res.cookies.set("dr_access_token", accessToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-  });
-
-  res.cookies.set("dr_refresh_token", refreshToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/api/auth",
-  });
-
+  setAuthCookies(res, accessToken, refreshToken);
   return res;
 }

@@ -1,15 +1,11 @@
-import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react";
-
-import { Badge } from "@/components/ui/badge";
 import {
   Card,
-  CardAction,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Stats } from "fs";
+import type { AdminStats } from "@/features/admin/types";
 
 function StatsCard(props: {
   title: string;
@@ -35,32 +31,42 @@ function StatsCard(props: {
   );
 }
 
-export function SectionCards() {
+export function SectionCards({ stats }: { stats: AdminStats }) {
+  const { totalVisitors, totalAccounts, totalAdmins, totalArtists } = stats;
+
+  const adminsPct = totalAccounts
+    ? ((totalAdmins / totalAccounts) * 100).toFixed(1)
+    : "0";
+
+  const artistsPct = totalAccounts
+    ? ((totalArtists / totalAccounts) * 100).toFixed(1)
+    : "0";
+
   return (
     <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
       <StatsCard
         title="Total Visitors"
-        value="32,000"
-        subtitle="Total visitor of drillrecord.com"
-        description="Mobile & Desktop visitors included"
+        value={totalVisitors.toLocaleString()}
+        subtitle="Total visitors of drillrecord.com"
+        description="Mobile & desktop visitors included"
       />
       <StatsCard
         title="Total Accounts"
-        value="32,000"
+        value={totalAccounts.toLocaleString()}
         subtitle="Total accounts registered"
-        description="Admins & Artists & Users included"
+        description="Admins, artists & users included"
       />
       <StatsCard
-        title="Total Admins "
-        value="32,000"
-        subtitle="31.2% of the total accounts"
-        description="Admins and Admins Reviewers included"
+        title="Total Admins"
+        value={totalAdmins.toLocaleString()}
+        subtitle={`${adminsPct}% of total accounts`}
+        description="Admins + admin reviewers"
       />
       <StatsCard
-        title="Total Artiests "
-        value="32,000"
-        subtitle="30.2% of the total accounts"
-        description="Admins and Admins Reviewers included"
+        title="Total Artists"
+        value={totalArtists.toLocaleString()}
+        subtitle={`${artistsPct}% of total accounts`}
+        description="Approved artists only"
       />
     </div>
   );

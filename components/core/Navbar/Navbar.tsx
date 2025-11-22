@@ -25,8 +25,8 @@ export function Navbar() {
   const artist = isArtist(user?.role);
   const regularUser = isRegularUser(user?.role);
 
-  let primaryHref = "/explore";
-  let primaryLabel = "Explore";
+  let primaryHref = "/register";
+  let primaryLabel = "Sign Up";
 
   if (loggedIn) {
     if (admin) {

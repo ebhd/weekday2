@@ -8,7 +8,7 @@ export function ResultsList({ items }: { items: DatasetItem[] }) {
     <ul className="space-y-2">
       {items.map((row) => (
         <li
-          key={`${row.rank}-${row.artistId}-${row.songId}`}
+          key={row.songId}
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between rounded-xl border border-white/5 bg-white/5 px-4 py-3 text-sm"
         >
           <Link href={`/artists/${row.artistSlug}`}>

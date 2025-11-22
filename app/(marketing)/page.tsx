@@ -1,7 +1,7 @@
-import { Hero } from "@/components/blocks/Hero";
-import { RankingHomeSection } from "@/components/blocks/Ranking/RankingHomeSection";
-import { Offers } from "@/components/blocks/Offers";
-import { Faq } from "@/components/blocks/Faq";
+import { Hero } from "@/features/marketing/Hero";
+import { RankingHomeSection } from "@/features/marketing/components/ranking-home/RankingHomeSection";
+import { Offers } from "@/features/marketing/Offers";
+import { Faq } from "@/features/marketing/Faq";
 export default function Home() {
   return (
     <>

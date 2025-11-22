@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getArtistBySlug, getArtistSongs } from "@/features/artists/api";
-import { ArtistProfileSection } from "@/components/blocks/ArtistProfileSection";
+import { getArtistBySlug, getArtistSongs } from "@/features/artists/server";
+import { ArtistProfileSection } from "@/features/marketing/ArtistProfileSection";
 
 type Params = { artistSlug: string };
 
@@ -9,7 +9,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const { artistSlug } = await params;
 
   const artist = await getArtistBySlug(artistSlug);
-  
+
   if (!artist) return notFound();
 
   const songs = await getArtistSongs(artist.id);
