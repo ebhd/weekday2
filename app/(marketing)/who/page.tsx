@@ -31,7 +31,7 @@ const team: TeamMember[] = [
     name: "Alfie Vercammen",
     role: "Project Coordinator",
     description:
-      "I have a strong interest in programming, data and everything related to technology. For me writing code kind of feels like writing a track, experimenting, layering ideas and fine tuning until everything falls in place. I love working on projects where I can mix logic with creativity, turning logical problems into something that flows.",
+      "Ik heb een sterke interesse in programmeren, data en alles wat met technologie te maken heeft. Voor mij voelt het schrijven van code een beetje als het schrijven van een nummer, experimenteren, ideeën op elkaar stapelen en finetunen totdat alles op zijn plaats valt. Ik werk graag aan projecten waarbij ik logica kan combineren met creativiteit, en logische problemen kan omzetten in iets dat vloeiend verloopt. ",
     imageSrc: "/team/alfie.jpg",
     linkedinUrl:
       "https://www.linkedin.com/in/alfie-ferrolino-vercammen-226b41342/",
