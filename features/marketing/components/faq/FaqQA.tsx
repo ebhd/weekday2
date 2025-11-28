@@ -19,8 +19,8 @@ interface Faq1Props {
 export const Faq1 = ({
   items = [
     {
-      id: "what-is-drillrecords",
-      question: "What is DrillRecords?",
+      id: "what-is-Weekday",
+      question: "What is Weekday?",
       answer:
         "A music platform where artists upload songs and listeners discover new tracks.",
     },

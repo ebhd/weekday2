@@ -27,7 +27,7 @@ export async function generateMetadata({
   const artist = await getArtistBySlug(artistSlug);
   if (!artist) return { title: "Artist not found" };
   return {
-    title: `${artist.name} — DrillRecords`,
+    title: `${artist.name} — Weekday`,
     description: artist.profile?.bio ?? "",
     openGraph: {
       title: artist.name,

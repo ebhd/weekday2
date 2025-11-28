@@ -61,15 +61,10 @@ export function Navbar() {
       {/* === Navbar Bar === */}
       <nav className="flex justify-between items-center pt-5 text-sm font-sans relative z-[1000]">
         {/* --- Logo --- */}
-        <Link href="/">
-          <Image
-            src="/drillrecord.png"
-            alt="drillrecords logo"
-            width={100}
-            height={50}
-            className="mr-4"
-          />
-        </Link>
+        <h1 className="font-medium font-display text-2xl antialiased">
+          The <span className="text-primary">Week</span>
+          <span className="text-secondary">day </span>
+        </h1>
 
         {/* --- Desktop Menu --- */}
         <ul className="hidden md:flex gap-x-12 text-white">
@@ -94,7 +89,15 @@ export function Navbar() {
               href="/about"
               className="relative inline-block no-underline after-line"
             >
-              About us
+              Overons
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/who"
+              className="relative inline-block no-underline after-line"
+            >
+              Wie is Wie
             </Link>
           </li>
         </ul>
@@ -196,6 +199,20 @@ export function Navbar() {
             >
               <Link href="/about" className="hover:text-gray-300 duration-200">
                 About us
+              </Link>
+              <motion.hr
+                variants={hrVariant}
+                className="bg-gray-600 h-px w-full mt-2"
+              />
+            </motion.div>
+            <motion.div
+              variants={liVariant}
+              transition={{ duration: 0.3, delay: 0.3, ease: customEase }}
+              onClick={handleClose}
+              className="text-4xl sm:text-5xl font-semibold"
+            >
+              <Link href="/who" className="hover:text-gray-300 duration-200">
+                Wie is Wie?
               </Link>
               <motion.hr
                 variants={hrVariant}

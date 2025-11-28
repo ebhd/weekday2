@@ -23,8 +23,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Drillrecord",
-  description: "A app to record and track your drilling practice sessions.",
+  title: "weekday",
+  description: "A app to Support underground artists.",
 };
 
 export default async function RootLayout({

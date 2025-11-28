@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!data) return { title: "Song not found" };
   const { song } = data;
   return {
-    title: `${song.title} — ${song.artist.name} | DrillRecords`,
+    title: `${song.title} — ${song.artist.name} | Weekday`,
     description: `${song.title} by ${song.artist.name}`,
     openGraph: {
       title: song.title,
