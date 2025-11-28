@@ -1,3 +1,5 @@
+// features/search/utils.ts
+
 import type { SuggestionOptions } from "./types";
 
 export const normalize = (s: string) => s.toLowerCase().trim();

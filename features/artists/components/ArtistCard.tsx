@@ -1,3 +1,4 @@
+// features/artists/components/ArtistCard.tsx
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faHeart } from "@fortawesome/free-solid-svg-icons";

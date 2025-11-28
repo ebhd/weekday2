@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { apiDelete, apiPatch } from "@/features/admin/client/adminApi";
 import { useRouter } from "next/navigation";
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 
 export function ArtistsTable({ initial }: { initial: AdminArtistRow[] }) {
   const router = useRouter();
@@ -45,12 +46,14 @@ export function ArtistsTable({ initial }: { initial: AdminArtistRow[] }) {
     setRows((prev) => prev.map((r) => (r.id === id ? { ...r, ...patch } : r)));
     router.refresh();
     cancelEdit();
+    notifySuccess("Artist updated successfully!");
   };
 
   const deleteRow = async (id: string) => {
     await apiDelete(`/api/admin/artists/${id}`);
     setRows((prev) => prev.filter((r) => r.id !== id));
     router.refresh();
+    notifySuccess("Artist deleted successfully!");
   };
 
   const columns: ColumnDef<AdminArtistRow>[] = [

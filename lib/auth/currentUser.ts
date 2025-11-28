@@ -3,6 +3,8 @@ import "server-only";
 import { cookies } from "next/headers";
 import { verifyAccessToken } from "./token";
 import type { AuthUser } from "@/features/auth/types";
+import { NextResponse } from "next/server";
+import { request } from "https";
 
 export async function getCurrentUser(): Promise<AuthUser | null> {
   const cookieStore = await cookies();

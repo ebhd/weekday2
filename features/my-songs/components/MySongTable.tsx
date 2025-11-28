@@ -1,3 +1,4 @@
+// features/my-songs/components/MySongTable.tsx
 "use client";
 
 import * as React from "react";
@@ -16,7 +17,7 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
-
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 type Props = {
   songs: MySongRow[];
   onUpdated: (song: MySongRow) => void;
@@ -40,8 +41,8 @@ export function MySongsTable({ songs, onUpdated, onDeleted }: Props) {
       onDeleted(songId);
     } catch (e) {
       console.error(e);
-      // you can toast here if you want
-      alert("Delete failed. Try again.");
+
+      notifyError("Delete failed. Try again.");
     } finally {
       setDeletingId(null);
     }
@@ -49,14 +50,14 @@ export function MySongsTable({ songs, onUpdated, onDeleted }: Props) {
 
   if (!songs.length) {
     return (
-      <div className="rounded-2xl border border-white/10 bg-black/30 p-6 text-white/70">
+      <div className="rounded-2xl border border-muted-fg/30 bg-black/30 p-6 text-white/70">
         You haven’t uploaded any songs yet.
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-black/30 overflow-hidden">
+    <div className="rounded-2xl border border-muted-fg/30 bg-surface overflow-hidden">
       <div className="grid grid-cols-[2fr_1.5fr_1fr_1fr_1fr_170px] px-4 py-3 text-xs text-white/60 bg-black/40">
         <div>Title</div>
         <div>Slug</div>

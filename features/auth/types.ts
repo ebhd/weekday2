@@ -1,3 +1,5 @@
+// features/auth/types.ts
+
 export type UserRole = "admin_full" | "admin_reviewer" | "artist" | "user";
 
 export type User = {

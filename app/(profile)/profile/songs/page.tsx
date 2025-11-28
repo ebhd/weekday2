@@ -1,3 +1,5 @@
+// app/(profile)/profile/songs/page.tsx
+
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 import { getArtistIdForUser, getMySongs } from "@/features/my-songs/server";
@@ -7,10 +9,10 @@ export const revalidate = 0;
 
 export default async function MySongs() {
   const user = await getCurrentUser();
-  if (!user) redirect("/login?returnTo=/dashboard/my-songs");
+  if (!user) redirect("/login?returnTo=/profile/my-songs");
 
   const artistId = await getArtistIdForUser(user.id);
-  if (!artistId) redirect("/dashboard/profile");
+  if (!artistId) redirect("/profile");
 
   const songs = await getMySongs(artistId);
 

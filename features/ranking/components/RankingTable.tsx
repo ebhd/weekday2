@@ -1,3 +1,4 @@
+// features/ranking/components/RankingTable.tsx
 "use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +18,7 @@ type RankingTableProps = {
   hasMore: boolean;
   onLoadMore: () => void;
   onToggleHeart?: (songId: string) => void;
+  onPlayProgress?: (songId: string, secondsPlayed: number) => void; // 👈 NEW
 };
 
 export function RankingTable({
@@ -24,10 +26,14 @@ export function RankingTable({
   hasMore,
   onLoadMore,
   onToggleHeart,
+  onPlayProgress,
 }: RankingTableProps) {
   return (
     <div>
-      <div id="ranking-table" className="rounded-2xl text-white bg-linear-to-b from-accent/40 to-secondary/30 border border-muted-fg backdrop-blur-md shadow-lg shadow-black/20 overflow-hidden font-sans">
+      <div
+        id="ranking-table"
+        className="rounded-2xl text-white bg-linear-to-b from-accent/40 to-secondary/30 border border-muted-fg backdrop-blur-md shadow-lg shadow-black/20 overflow-hidden font-sans"
+      >
         {/* HEADER */}
         <div
           className={`${rankingDesktopGrid} ${rankingMobileGrid} px-4 lg:px-8 py-4 text-sm text-white/60 bg-black/20`}
@@ -47,6 +53,7 @@ export function RankingTable({
               key={row.songId}
               {...row}
               onToggleHeart={onToggleHeart}
+              onPlayProgress={onPlayProgress}
             />
           ))}
         </div>

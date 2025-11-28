@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { adminGuard } from "../../_utils";
 import { supabase } from "@/lib/supabaseClient";
+import { cleanupArtistAssets } from "@/features/storage/server/cleanup";
 
 const zPatchArtist = z.object({
   display_name: z.string().min(1).max(64).optional(),
@@ -58,6 +59,8 @@ export async function DELETE(
     return NextResponse.json({ error: "Invalid id" }, { status: 400 });
   }
 
+  await cleanupArtistAssets(id);
+  
   const { error } = await supabase.from("artists").delete().eq("id", id);
 
   if (error) {

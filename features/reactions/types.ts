@@ -1,3 +1,5 @@
+// features/reactions/types.ts
+
 export type ReactionType = "like" | "dislike";
 
 export type SongReactionMap = Record<string, ReactionType | null>;

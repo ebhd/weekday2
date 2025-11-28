@@ -1,3 +1,4 @@
+// features/admin/client/adminApi.ts
 async function apiRequest<T>(
   method: "GET" | "POST" | "PATCH" | "DELETE",
   url: string,

@@ -1,3 +1,4 @@
+// app/api/profile/artist/avatar/route.ts
 import "server-only";
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/currentUser";
@@ -12,9 +13,9 @@ import {
 } from "@/features/profile/server/storage";
 import { compressImageFile } from "@/features/profile/server/image";
 
-export const runtime = "nodejs"; // IMPORTANT for sharp
+export const runtime = "nodejs";
 
-const MAX_BYTES = 6 * 1024 * 1024; // allow bigger raw upload
+const MAX_BYTES = 6 * 1024 * 1024;
 const ALLOWED = ["image/png", "image/jpeg", "image/webp", "image/avif"];
 
 export async function POST(req: Request) {
@@ -42,7 +43,6 @@ export async function POST(req: Request) {
   try {
     await deleteIfExists(artist.avatarUrl);
 
-    // ✅ compress avatar (small square style)
     const compressed = await compressImageFile(file, {
       maxWidth: 512,
       maxHeight: 512,
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
 
     const uploaded = await uploadPublicBuffer({
       folder: "avatars",
-      artistId: artist.id,
+      ownerId: artist.id,
       buffer: compressed.buffer,
       contentType: compressed.contentType,
       ext: compressed.ext,

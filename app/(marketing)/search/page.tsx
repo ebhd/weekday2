@@ -1,3 +1,5 @@
+// app/(marketing)/search/page.tsx
+
 import SearchScreen from "@/features/search/components/SearchScreen";
 import { getLocalDataset } from "@/features/search/server";
 

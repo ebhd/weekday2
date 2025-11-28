@@ -1,3 +1,5 @@
+// app/(admin)/admin/tables/page.tsx
+
 import { getAdminUsers } from "@/features/admin/server/users";
 import { getAdminArtists } from "@/features/admin/server/artists";
 import { getAdminSongs } from "@/features/admin/server/songs";

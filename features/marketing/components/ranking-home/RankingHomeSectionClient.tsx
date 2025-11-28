@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-
+import { notifySuccess } from "@/features/notifications/store";
 import { TextBar } from "@/components/core/TextBar";
 import { RankingTable } from "@/features/ranking/components/RankingTable";
 import { ArtistCard } from "@/features/artists/components/ArtistCard";
@@ -18,6 +18,7 @@ import type {
   ReactionType,
   ReactionResponse,
 } from "@/features/reactions/types";
+import { reportSongPlay } from "@/features/songs/client/plays";
 
 type Props = {
   songRows: RankingRowProps[];
@@ -70,7 +71,6 @@ export function RankingHomeSectionClient({ songRows, artistRows }: Props) {
       : reactionsMap[songId] ?? null;
 
   async function toggleHeart(songId: string) {
-    // 1) Not logged in -> redirect to login
     if (!user) {
       router.push(`/login?returnTo=${encodeURIComponent(pathname)}`);
       return;
@@ -79,7 +79,6 @@ export function RankingHomeSectionClient({ songRows, artistRows }: Props) {
     const prev = effectiveReactionFor(songId);
     const next: ReactionType | null = prev === "like" ? null : "like";
 
-    // 2) optimistic UI
     setOptimistic((m) => ({ ...m, [songId]: next }));
 
     try {
@@ -93,21 +92,39 @@ export function RankingHomeSectionClient({ songRows, artistRows }: Props) {
       const data: ReactionResponse = await res.json();
       if (!res.ok) throw new Error((data as any)?.error ?? "Failed to react");
 
-      // 3) Sync optimistic to DB truth (can be null!)
       setOptimistic((m) => ({
         ...m,
         [songId]: data.userReaction ?? null,
       }));
+      notifySuccess("Song liked successfully!");
     } catch (e) {
       console.error("toggleHeart error", e);
-      // rollback
+
       setOptimistic((m) => ({ ...m, [songId]: prev }));
     }
   }
 
-  // ---------------------------
-  // Enrich visible ranking rows with effective isHearted + displayed count
-  // ---------------------------
+  const [songViews, setSongViews] = useState<
+    Record<string, number | undefined>
+  >({});
+  const [playReported, setPlayReported] = useState<
+    Record<string, boolean | undefined>
+  >({});
+
+  async function handlePlayProgress(songId: string, secondsPlayed: number) {
+    const THRESHOLD_SECONDS = 10;
+
+    if (playReported[songId]) return;
+    if (secondsPlayed < THRESHOLD_SECONDS) return;
+
+    setPlayReported((prev) => ({ ...prev, [songId]: true }));
+
+    const newCount = await reportSongPlay(songId);
+    if (typeof newCount === "number") {
+      setSongViews((prev) => ({ ...prev, [songId]: newCount }));
+    }
+  }
+
   const visibleRowsEnriched = useMemo<RankingRowProps[]>(() => {
     return visibleRows.map((row) => {
       const dbReaction = reactionsMap[row.songId] ?? null;
@@ -118,23 +135,22 @@ export function RankingHomeSectionClient({ songRows, artistRows }: Props) {
 
       const baseHearts = typeof row.hearts === "number" ? row.hearts : 0;
 
-      // Instant UI count adjustment:
-      // If DB had your like included and you unliked => -1.
-      // If DB didn't have your like and you liked => +1.
       const displayedHearts =
         baseHearts + (effectiveLiked ? 1 : 0) - (dbLiked ? 1 : 0);
 
+      const overrideViews = songViews[row.songId];
+      const views =
+        typeof overrideViews === "number" ? overrideViews : row.views ?? 0;
       return {
         ...row,
+        views,
         isHearted: effectiveLiked,
         hearts: Math.max(0, displayedHearts),
       };
     });
-  }, [visibleRows, reactionsMap, optimistic]);
+  }, [visibleRows, reactionsMap, optimistic, songViews]);
 
-  // ---------------------------
-  // Side cards layout calc (your existing logic)
-  // ---------------------------
+  //sidecard logic
   const tableRef = useRef<HTMLDivElement | null>(null);
   const firstCardRef = useRef<HTMLDivElement | null>(null);
 
@@ -193,6 +209,7 @@ export function RankingHomeSectionClient({ songRows, artistRows }: Props) {
             hasMore={hasMore}
             onLoadMore={handleLoadMore}
             onToggleHeart={toggleHeart}
+            onPlayProgress={handlePlayProgress}
           />
         </div>
 

@@ -20,6 +20,7 @@ const SELECT_WITH_ARTIST = `
   like_count,
   dislike_count,
   score,
+  is_downloadable,
   artists:artist_id (
     id,
     slug,
@@ -54,6 +55,7 @@ function mapSong(row: SongRowWithArtist, ranking?: number): Song {
     hasLyrics: row.has_lyrics ?? undefined,
     releasedAt: row.released_at ?? undefined,
     durationSec: row.duration_sec ?? undefined,
+    isDownloadable: row.is_downloadable ?? true,
   };
 }
 

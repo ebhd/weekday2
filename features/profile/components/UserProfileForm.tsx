@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { UserProfile } from "../types";
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 
 type Props = {
   initialProfile: UserProfile;
@@ -56,9 +57,11 @@ export function UserProfileForm({ initialProfile }: Props) {
       setProfile(data.profile);
       setUsername(data.profile.username);
       setSuccess("Profile updated successfully.");
+      notifySuccess("Profile updated successfully.");
     } catch (err) {
       console.error(err);
       setError("Something went wrong.");
+      notifyError("Something went wrong.");
     } finally {
       setSavingProfile(false);
     }
@@ -71,6 +74,7 @@ export function UserProfileForm({ initialProfile }: Props) {
 
     if (newPassword !== confirmNewPassword) {
       setError("New passwords do not match.");
+      notifyError("New passwords do not match.");
       return;
     }
 
@@ -97,9 +101,11 @@ export function UserProfileForm({ initialProfile }: Props) {
       setNewPassword("");
       setConfirmNewPassword("");
       setSuccess("Password updated successfully.");
+      notifySuccess("Password updated successfully.");
     } catch (err) {
       console.error(err);
       setError("Something went wrong.");
+      notifyError("Something went wrong.");
     } finally {
       setSavingPassword(false);
     }

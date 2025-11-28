@@ -1,3 +1,4 @@
+// features/songs/types.ts
 export type SongStats = {
   views: number;
   likes: number;
@@ -26,6 +27,7 @@ export type Song = {
   sources?: SongSource[];
   stats: SongStats;
   hasLyrics?: boolean;
+  isDownloadable: boolean;
   releasedAt?: string;
   durationSec?: number;
 };

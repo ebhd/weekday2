@@ -1,3 +1,5 @@
+// features/search/types.ts
+
 import type { ReactNode } from "react";
 
 export type SearchResultItem = {

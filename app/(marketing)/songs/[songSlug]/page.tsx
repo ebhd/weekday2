@@ -1,3 +1,4 @@
+// app/(marketing)/songs/[songSlug]/page.tsx
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSongWithArtistPreview } from "@/features/songs/server";

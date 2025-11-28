@@ -1,3 +1,4 @@
+// features/artists/types.ts
 export type ArtistProfile = {
   bannerUrl?: string;
   avatarUrl?: string;

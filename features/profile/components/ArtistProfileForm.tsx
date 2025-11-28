@@ -1,3 +1,4 @@
+// features/profile/components/ArtistProfileForm.tsx
 "use client";
 
 import * as React from "react";
@@ -14,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import type { ArtistProfile } from "../types";
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 
 type Props = { initialArtist: ArtistProfile };
 
@@ -75,8 +77,10 @@ export function ArtistProfileForm({ initialArtist }: Props) {
       setBio(data.artist.bio ?? "");
       setSocialsRaw(JSON.stringify(data.artist.socials ?? {}, null, 2));
       setSuccess("Artist profile updated.");
+      notifySuccess("Artist profile updated.");
     } catch (err) {
       console.error(err);
+      notifyError("Contact our support.");
       setError("Something went wrong.");
     } finally {
       setSaving(false);
@@ -121,7 +125,7 @@ export function ArtistProfileForm({ initialArtist }: Props) {
       const f = e.target.files?.[0];
       if (!f) return;
       uploadFile(kind, f);
-      e.currentTarget.value = ""; // allow re-pick same file
+      e.currentTarget.value = "";
     };
   }
 

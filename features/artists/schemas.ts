@@ -1,3 +1,4 @@
+// features/artists/schemas.ts
 import { z } from "zod";
 
 export const zArtistRow = z.object({

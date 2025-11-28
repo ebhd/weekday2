@@ -11,7 +11,9 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import type { MySongRow } from "../types";
-
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { notifySuccess, notifyError } from "@/features/notifications/store";
 type Props = {
   song: MySongRow;
   onUpdated: (song: MySongRow) => void;
@@ -30,6 +32,9 @@ export function EditSongDialog({ song, onUpdated }: Props) {
   const [open, setOpen] = React.useState(false);
   const [title, setTitle] = React.useState(song.title);
   const [slug, setSlug] = React.useState(song.slug);
+  const [isDownloadable, setIsDownloadable] = React.useState(
+    song.isDownloadable
+  );
   const [saving, setSaving] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -37,17 +42,21 @@ export function EditSongDialog({ song, onUpdated }: Props) {
     setError(null);
     setSaving(true);
     try {
-      const res = await fetch(`/api/artist/songs/${song.id}`, {
+      const res = await fetch(`/api/profile/artist/songs/${song.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ title, slug }),
+        body: JSON.stringify({ title, slug, isDownloadable }),
       });
 
       const data = await res.json();
+
       if (!res.ok) {
         setError(data.error ?? "Update failed");
+        notifyError("Update failed");
         return;
+      } else {
+        notifySuccess("Song updated successfully");
       }
 
       onUpdated(data.song);
@@ -87,6 +96,19 @@ export function EditSongDialog({ song, onUpdated }: Props) {
             value={slug}
             onChange={(e) => setSlug(slugify(e.target.value))}
           />
+
+          <div className="flex items-center justify-between rounded-xl border border-white/10 px-3 py-2 text-sm">
+            <div>
+              <Label className="font-medium">Allow downloads</Label>
+              <p className="text-xs text-white/60">
+                When enabled, listeners see a download button.
+              </p>
+            </div>
+            <Switch
+              checked={isDownloadable}
+              onCheckedChange={(v) => setIsDownloadable(v)}
+            />
+          </div>
 
           {error && <p className="text-sm text-red-400">{error}</p>}
 

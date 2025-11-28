@@ -1,3 +1,5 @@
+// app/(profile)/profile/page.tsx
+
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 
@@ -11,11 +13,11 @@ export const revalidate = 0;
 
 export default async function ProfilePage() {
   const user = await getCurrentUser();
-  if (!user) redirect("/login?returnTo=/dashboard/profile");
+  if (!user) redirect("/login?returnTo=/profile");
 
   const [profile, artist] = await Promise.all([
     getUserProfileById(user.id),
-    getArtistProfileByUserId(user.id), 
+    getArtistProfileByUserId(user.id),
   ]);
 
   if (!profile) redirect("/");

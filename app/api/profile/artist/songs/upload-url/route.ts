@@ -1,3 +1,5 @@
+// app/api/profile/artist/songs/upload-url/route.ts
+
 import "server-only";
 
 import { NextResponse } from "next/server";
@@ -7,15 +9,18 @@ import { z } from "zod";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 import { supabase } from "@/lib/supabaseClient";
 import { getArtistIdForUser } from "@/features/my-songs/server";
+import { STORAGE_BUCKET } from "@/features/storage/shared";
 
 export const runtime = "nodejs";
 
-const BUCKET = "drillrecords-assets";
 const MAX_AUDIO_MB = 15;
 
 const ALLOWED_MIME = new Set([
-  "audio/mpeg", // mp3
-  "audio/mp4", // m4a
+  "audio/mpeg",
+  "audio/mp4",
+  "audio/m4a",
+  "audio/x-m4a",
+  "audio/aac",
   "audio/wav",
   "audio/x-wav",
   "audio/ogg",
@@ -29,9 +34,19 @@ const zUploadUrlBody = z.object({
 
 function extFromMime(mime: string) {
   if (mime === "audio/mpeg") return "mp3";
-  if (mime === "audio/mp4") return "m4a";
+
+  if (
+    mime === "audio/mp4" ||
+    mime === "audio/m4a" ||
+    mime === "audio/x-m4a" ||
+    mime === "audio/aac"
+  ) {
+    return "m4a";
+  }
+
   if (mime === "audio/ogg") return "ogg";
   if (mime.includes("wav")) return "wav";
+
   return "bin";
 }
 
@@ -74,7 +89,7 @@ export async function POST(req: Request) {
 
   // Signed upload URL (short-lived token)
   const { data, error } = await supabase.storage
-    .from(BUCKET)
+    .from(STORAGE_BUCKET)
     .createSignedUploadUrl(storagePath);
 
   if (error || !data) {
@@ -85,7 +100,9 @@ export async function POST(req: Request) {
     );
   }
 
-  const { data: pub } = supabase.storage.from(BUCKET).getPublicUrl(storagePath);
+  const { data: pub } = supabase.storage
+    .from(STORAGE_BUCKET)
+    .getPublicUrl(storagePath);
 
   return NextResponse.json({
     path: storagePath,

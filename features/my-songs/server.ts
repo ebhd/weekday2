@@ -1,12 +1,12 @@
+// features/my-songs/server.ts
 import "server-only";
 
 import { supabase } from "@/lib/supabaseClient";
 import type { MySongRow, MySongUpdateInput } from "./types";
-
-const BUCKET = "drillrecords-assets";
+import { STORAGE_BUCKET } from "@/features/storage/shared";
 
 function extractStoragePath(publicUrl: string): string | null {
-  const marker = `/storage/v1/object/public/${BUCKET}/`;
+  const marker = `/storage/v1/object/public/${STORAGE_BUCKET}/`;
   const idx = publicUrl.indexOf(marker);
   if (idx === -1) return null;
   return publicUrl.slice(idx + marker.length);
@@ -30,7 +30,7 @@ export async function getMySongs(artistId: string): Promise<MySongRow[]> {
   const { data, error } = await supabase
     .from("songs")
     .select(
-      "id, title, slug, audio_url, duration_sec, released_at, status, created_at, approved_at"
+      "id, title, slug, audio_url, duration_sec, released_at, status, created_at, approved_at, is_downloadable"
     )
     .eq("artist_id", artistId)
     .order("created_at", { ascending: false });
@@ -50,6 +50,7 @@ export async function getMySongs(artistId: string): Promise<MySongRow[]> {
     status: s.status,
     createdAt: s.created_at,
     approvedAt: s.approved_at,
+    isDownloadable: s.is_downloadable ?? true,
   }));
 }
 
@@ -63,12 +64,12 @@ export async function updateMySong(
     .update({
       title: input.title.trim(),
       slug: input.slug.trim(),
-      updated_at: new Date().toISOString(),
+      is_downloadable: input.isDownloadable,
     })
     .eq("id", songId)
     .eq("artist_id", artistId)
     .select(
-      "id, title, slug, audio_url, duration_sec, released_at, status, created_at, approved_at"
+      "id, title, slug, audio_url, duration_sec, released_at, status, created_at, approved_at, is_downloadable"
     )
     .maybeSingle();
 
@@ -87,6 +88,7 @@ export async function updateMySong(
     status: data.status,
     createdAt: data.created_at,
     approvedAt: data.approved_at,
+    isDownloadable: data.is_downloadable ?? true,
   };
 }
 
@@ -109,7 +111,7 @@ export async function deleteMySong(
   const storagePath = extractStoragePath(song.audio_url);
   if (storagePath) {
     const { error: rmErr } = await supabase.storage
-      .from(BUCKET)
+      .from(STORAGE_BUCKET)
       .remove([storagePath]);
 
     if (rmErr) console.warn("storage remove failed", rmErr);

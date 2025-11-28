@@ -1,3 +1,4 @@
+// features/reactions/schemas.ts
 import { z } from "zod";
 
 export const zReactionType = z.enum(["like", "dislike"]);

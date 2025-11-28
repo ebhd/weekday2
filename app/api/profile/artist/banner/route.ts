@@ -1,3 +1,5 @@
+// app/api/profile/artist/avatar/route.ts
+
 import "server-only";
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/currentUser";
@@ -42,7 +44,6 @@ export async function POST(req: Request) {
   try {
     await deleteIfExists(artist.bannerUrl);
 
-    // ✅ compress banner (wide, nice quality)
     const compressed = await compressImageFile(file, {
       maxWidth: 1920,
       maxHeight: 720,
@@ -52,7 +53,7 @@ export async function POST(req: Request) {
 
     const uploaded = await uploadPublicBuffer({
       folder: "banners",
-      artistId: artist.id,
+      ownerId: artist.id,
       buffer: compressed.buffer,
       contentType: compressed.contentType,
       ext: compressed.ext,

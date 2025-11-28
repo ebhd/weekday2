@@ -1,3 +1,4 @@
+// features/ranking/components/RankingTableParts/SongPlayer.tsx
 "use client";
 
 import WavesurferPlayer from "@wavesurfer/react";
@@ -7,11 +8,16 @@ import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
 type SongPlayerProps = {
   url?: string | null;
-
   height?: number;
+
+  onPlayProgress?: (secondsPlayed: number) => void;
 };
 
-export function SongPlayer({ url, height = 80 }: SongPlayerProps) {
+export function SongPlayer({
+  url,
+  height = 80,
+  onPlayProgress,
+}: SongPlayerProps) {
   const [wavesurfer, setWavesurfer] = React.useState<any | null>(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
 
@@ -52,11 +58,10 @@ export function SongPlayer({ url, height = 80 }: SongPlayerProps) {
         )}
       </button>
 
-      {/* Waveform (desktop only) */}
+      {/* Waveform  */}
       <div className="hidden md:block flex-1 max-w-[350px]">
         {url ? (
           <WavesurferPlayer
-            /** key forces wavesurfer to rebuild when url changes */
             key={url}
             height={height}
             waveColor="white"
@@ -67,6 +72,27 @@ export function SongPlayer({ url, height = 80 }: SongPlayerProps) {
             onReady={onReady}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
+            onTimeupdate={(ws: any) => {
+              if (!onPlayProgress) return;
+
+              let currentTime: number | null = null;
+
+              if (typeof ws === "number") {
+                currentTime = ws;
+              } else if (ws && typeof ws.getCurrentTime === "function") {
+                currentTime = ws.getCurrentTime();
+              }
+
+              if (
+                currentTime == null ||
+                typeof currentTime !== "number" ||
+                Number.isNaN(currentTime)
+              ) {
+                return;
+              }
+
+              onPlayProgress(currentTime);
+            }}
           />
         ) : (
           <div className="text-xs text-white/40 italic">No audio preview</div>

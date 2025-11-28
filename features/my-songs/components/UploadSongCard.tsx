@@ -1,3 +1,4 @@
+// features/my-songs/components/UploadSongCard.tsx
 "use client";
 
 import * as React from "react";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { MySongRow } from "../types";
 import { supabaseBrowser } from "@/lib/supabaseBrowser";
+import { STORAGE_BUCKET } from "@/features/storage/shared";
 
 type Props = {
   onCreated: (song: MySongRow) => void;
@@ -15,6 +17,9 @@ const MAX_AUDIO_MB = 15;
 const ALLOWED_MIME = new Set([
   "audio/mpeg",
   "audio/mp4",
+  "audio/x-m4a",
+  "audio/m4a",
+  "audio/aac",
   "audio/wav",
   "audio/x-wav",
   "audio/ogg",
@@ -76,7 +81,7 @@ export function UploadSongCard({ onCreated }: Props) {
 
       // 2) upload directly to Supabase storage using signed token
       const { error: upErr } = await supabaseBrowser.storage
-        .from("drillrecords-assets")
+        .from(STORAGE_BUCKET)
         .uploadToSignedUrl(path, token, file, {
           contentType: file.type,
           upsert: false,
@@ -119,7 +124,7 @@ export function UploadSongCard({ onCreated }: Props) {
   }
 
   return (
-    <Card className="bg-black/30 border-white/10">
+    <Card className="bg-surface border-muted-fg/30">
       <CardHeader>
         <CardTitle className="font-display text-xl">
           Upload a new song

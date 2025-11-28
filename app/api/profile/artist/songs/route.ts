@@ -1,3 +1,4 @@
+// app/api/profile/artist/songs/route.ts
 import "server-only";
 
 import { NextResponse } from "next/server";
@@ -7,10 +8,10 @@ import { z } from "zod";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 import { supabase } from "@/lib/supabaseClient";
 import { getArtistIdForUser, getMySongs } from "@/features/my-songs/server";
+import { STORAGE_BUCKET } from "@/features/storage/shared";
+
 
 export const runtime = "nodejs";
-
-const BUCKET = "drillrecords-assets";
 
 const zCreateSongFromUpload = z.object({
   title: z.string().min(1).max(120),
@@ -103,7 +104,7 @@ export async function POST(req: Request) {
     console.error("insert song error", insErr);
     // best-effort cleanup of uploaded file
     await supabase.storage
-      .from(BUCKET)
+      .from(STORAGE_BUCKET)
       .remove([path])
       .catch(() => {});
     return NextResponse.json({ error: "Insert failed" }, { status: 500 });

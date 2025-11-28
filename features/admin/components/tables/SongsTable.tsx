@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { apiDelete, apiPatch } from "@/features/admin/client/adminApi";
 import { useRouter } from "next/navigation";
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 
 export function SongsTable({ initial }: { initial: AdminSongRow[] }) {
   const router = useRouter();
@@ -24,7 +25,11 @@ export function SongsTable({ initial }: { initial: AdminSongRow[] }) {
 
   const startEdit = (row: AdminSongRow) => {
     setEditingId(row.id);
-    setDraft({ title: row.title, status: row.status });
+    setDraft({
+      title: row.title,
+      status: row.status,
+      is_downloadable: row.is_downloadable,
+    });
   };
 
   const cancelEdit = () => {
@@ -36,21 +41,36 @@ export function SongsTable({ initial }: { initial: AdminSongRow[] }) {
     const current = rows.find((r) => r.id === id);
     if (!current) return;
 
-    const patch: Pick<AdminSongRow, "title" | "status"> = {
+    const patch: Pick<AdminSongRow, "title" | "status" | "is_downloadable"> = {
       title: (draft.title ?? current.title).trim(),
       status: draft.status ?? current.status,
+      is_downloadable: draft.is_downloadable ?? current.is_downloadable ?? true,
     };
 
-    await apiPatch(`/api/admin/songs/${id}`, patch);
-    setRows((prev) => prev.map((r) => (r.id === id ? { ...r, ...patch } : r)));
-    router.refresh();
-    cancelEdit();
+    try {
+      await apiPatch(`/api/admin/songs/${id}`, patch);
+      setRows((prev) =>
+        prev.map((r) => (r.id === id ? { ...r, ...patch } : r))
+      );
+      router.refresh();
+      cancelEdit();
+      notifySuccess("Song updated successfully!");
+    } catch (e) {
+      console.error("admin songs PATCH error", e);
+      notifyError("Failed to update song. Try again.");
+    }
   };
 
   const deleteRow = async (id: string) => {
-    await apiDelete(`/api/admin/songs/${id}`);
-    setRows((prev) => prev.filter((r) => r.id !== id));
-    router.refresh();
+    try {
+      await apiDelete(`/api/admin/songs/${id}`);
+      setRows((prev) => prev.filter((r) => r.id !== id));
+      router.refresh();
+      notifySuccess("Song deleted successfully!");
+    } catch (e) {
+      console.error("admin songs DELETE error", e);
+      notifyError("Failed to delete song. Try again.");
+    }
   };
 
   const columns: ColumnDef<AdminSongRow>[] = [
@@ -107,6 +127,39 @@ export function SongsTable({ initial }: { initial: AdminSongRow[] }) {
                 {s}
               </option>
             ))}
+          </select>
+        );
+      },
+    },
+    {
+      accessorKey: "is_downloadable",
+      header: "Downloadable",
+      cell: ({ row }) => {
+        const r = row.original;
+        const editing = editingId === r.id;
+        const value = draft.is_downloadable ?? r.is_downloadable ?? true;
+
+        if (!editing) {
+          return (
+            <Badge variant="outline" className="capitalize">
+              {value ? "Yes" : "No"}
+            </Badge>
+          );
+        }
+
+        return (
+          <select
+            className="h-8 rounded-md bg-black/30 border border-white/10 px-2 text-sm"
+            value={value ? "true" : "false"}
+            onChange={(e) =>
+              setDraft((d) => ({
+                ...d,
+                is_downloadable: e.target.value === "true",
+              }))
+            }
+          >
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </select>
         );
       },

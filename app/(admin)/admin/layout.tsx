@@ -1,3 +1,5 @@
+// app/(admin)/admin/layout.tsx
+
 import { redirect } from "next/navigation";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { SiteHeader } from "@/components/site-header";

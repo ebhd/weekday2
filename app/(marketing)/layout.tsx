@@ -1,3 +1,5 @@
+// app/(marketing)/layout.tsx
+
 import "../globals.css";
 import { defaultSEO } from "@/config/seo";
 import { Navbar } from "@/components/core/Navbar/Navbar";

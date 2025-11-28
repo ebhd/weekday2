@@ -1,3 +1,5 @@
+// app/api/profile/password/route.ts
+
 import "server-only";
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/currentUser";

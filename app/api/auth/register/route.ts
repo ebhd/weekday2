@@ -1,3 +1,5 @@
+// app/api/auth/register/route.ts
+
 import "server-only";
 import { NextResponse } from "next/server";
 import { zRegisterBody } from "@/features/auth/schemas";

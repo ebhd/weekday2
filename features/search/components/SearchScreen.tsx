@@ -1,3 +1,4 @@
+// features/search/components/SearchScreen.tsx
 "use client";
 
 import { Mic, Music } from "lucide-react";

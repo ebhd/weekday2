@@ -1,3 +1,4 @@
+// features/auth/store.ts
 "use client";
 
 import { create } from "zustand";

@@ -1,3 +1,5 @@
+// features/songs/schemas.ts
+
 import { z } from "zod";
 
 const zInt0 = z.coerce.number().int().nonnegative().catch(0);
@@ -18,6 +20,7 @@ export const zSongRowWithArtist = z.object({
   like_count: zInt0,
   dislike_count: zInt0,
   score: z.coerce.number().int().nullable().catch(null),
+  is_downloadable: z.boolean().optional().nullable(),
 
   artists: z.object({
     id: z.uuid(),

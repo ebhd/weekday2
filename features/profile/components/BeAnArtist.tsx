@@ -1,3 +1,4 @@
+// features/profile/components/BeAnArtist.tsx
 "use client";
 
 import * as React from "react";
@@ -12,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 
 type Props = {
   initialSlug?: string;
@@ -68,13 +70,13 @@ export function BeArtistForm({
         return;
       }
 
-      setSuccess("You're now an artist! 🎉 Redirecting...");
-
+      notifySuccess("You're now an artist! 🎉 Redirecting...");
       router.refresh();
       router.push("/profile");
     } catch (err) {
       console.error(err);
       setError("Something went wrong.");
+      notifyError("Contact our support.");
     } finally {
       setSaving(false);
     }

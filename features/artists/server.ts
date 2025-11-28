@@ -1,3 +1,4 @@
+// features/artists/server.ts
 import "server-only";
 import { cache } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -5,6 +6,7 @@ import { zArtistRow, type ArtistRow } from "./schemas";
 import type { Artist, ArtistStats } from "./types";
 import type { Song } from "@/features/songs/types";
 import { getSongsByArtistId } from "@/features/songs/server";
+import { scoreFromCounts } from "@/features/ranking/utils";
 
 type ArtistStatsBase = {
   totalViews: number;
@@ -12,10 +14,6 @@ type ArtistStatsBase = {
   totalSongs: number;
   ranking: number;
 };
-
-function scoreFromCounts(views: number, likes: number, score?: number | null) {
-  return score ?? views + likes * 3;
-}
 
 const getArtistStatsMap = cache(
   async (): Promise<Map<string, ArtistStatsBase>> => {

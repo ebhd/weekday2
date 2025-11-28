@@ -1,3 +1,4 @@
+// features/profile/nav.ts
 import {
   IconDashboard,
   IconListDetails,

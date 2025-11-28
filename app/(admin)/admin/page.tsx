@@ -1,3 +1,5 @@
+// app/(admin)/admin/page.tsx
+
 import { ChartAreaInteractive } from "@/components/chart-area-interactive";
 import { SectionCards } from "@/components/section-cards";
 import { getAdminStats } from "@/features/admin/server";

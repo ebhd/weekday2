@@ -8,6 +8,7 @@ import { rankingDesktopGrid, rankingMobileGrid } from "../RankingTable";
 
 type Props = RankingRowProps & {
   onToggleHeart?: (songId: string) => void;
+  onPlayProgress?: (songId: string, secondsPlayed: number) => void;
 };
 
 export function RankingRow(props: Props) {
@@ -46,7 +47,14 @@ export function RankingRow(props: Props) {
       </div>
 
       <div className="w-full max-w-full justify-center lg:max-w-[380px]">
-        <SongPlayer url={props.audioUrl} />
+        <SongPlayer
+          url={props.audioUrl}
+          onPlayProgress={
+            props.onPlayProgress
+              ? (seconds) => props.onPlayProgress?.(props.songId, seconds)
+              : undefined
+          }
+        />
       </div>
 
       <div className="flex items-center justify-end gap-3">

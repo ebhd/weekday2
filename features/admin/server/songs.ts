@@ -15,6 +15,7 @@ export async function getAdminSongs(): Promise<AdminSongRow[]> {
       like_count,
       score,
       created_at,
+      is_downloadable,
       artists:artist_id ( display_name )
     `
     )
@@ -35,5 +36,6 @@ export async function getAdminSongs(): Promise<AdminSongRow[]> {
     score: row.score ?? 0,
     created_at: row.created_at,
     artist_name: row.artists?.display_name ?? null,
+    is_downloadable: !!row.is_downloadable,
   })) as AdminSongRow[];
 }

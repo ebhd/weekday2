@@ -1,3 +1,4 @@
+// features/songs/components/SongProfileSection.tsx
 "use client";
 
 import Image from "next/image";
@@ -23,6 +24,7 @@ import type {
   ReactionType,
   ReactionResponse,
 } from "@/features/reactions/types";
+import { reportSongPlay } from "@/features/songs/client/plays";
 
 const hasOwn = (obj: object, key: string) =>
   Object.prototype.hasOwnProperty.call(obj, key);
@@ -42,6 +44,10 @@ export function SongProfileSection({
 
   const [serverHearts, setServerHearts] = useState(song.stats.likes ?? 0);
   const [serverDislikes, setServerDislikes] = useState(0);
+
+  // 👇 local views state so UI updates when we report a play
+  const [views, setViews] = useState(song.stats.views ?? 0);
+  const [playReported, setPlayReported] = useState(false);
 
   const [optimistic, setOptimistic] = useState<
     Record<string, ReactionType | null | undefined>
@@ -111,6 +117,25 @@ export function SongProfileSection({
     );
   }, [artists, song.artist]);
 
+  // 👇 Called when player reports enough playback time
+  async function handlePlayProgress(secondsPlayed: number) {
+    // Only send one "play" per page load, and only after e.g. 10s
+    const THRESHOLD_SECONDS = 10;
+
+    if (playReported) return;
+    if (secondsPlayed < THRESHOLD_SECONDS) return;
+
+    setPlayReported(true);
+
+    const newCount = await reportSongPlay(song.id);
+    if (typeof newCount === "number") {
+      setViews(newCount);
+    } else {
+      // if API fails, don't revert playReported to avoid spam
+      console.warn("Play report failed, keeping local state");
+    }
+  }
+
   return (
     <section
       className="
@@ -152,7 +177,11 @@ export function SongProfileSection({
           </div>
 
           <div className="flex-1 lg:min-w-[200px] px-2">
-            <SongPlayer url={song.audioUrl} />
+            {/* 👇 pass playback progress callback */}
+            <SongPlayer
+              url={song.audioUrl}
+              onPlayProgress={handlePlayProgress}
+            />
           </div>
 
           <button
@@ -177,8 +206,7 @@ export function SongProfileSection({
 
         <div className="pl-[4.5rem] sm:pl-[4.75rem] text-xs text-white/70 flex items-center gap-4">
           <span className="inline-flex items-center gap-1">
-            <FontAwesomeIcon icon={faEye} />{" "}
-            {(song.stats.views ?? 0).toLocaleString()}
+            <FontAwesomeIcon icon={faEye} /> {views.toLocaleString()}
           </span>
           <span className="inline-flex items-center gap-1">
             <FontAwesomeIcon icon={faHeart} />{" "}
@@ -213,14 +241,26 @@ export function SongProfileSection({
           </div>
         </Link>
 
-        <a
-          href={song.audioUrl}
-          download
-          className="rounded-2xl bg-black/30 border border-white/10 px-6 py-5 flex items-center gap-5 hover:bg-white/[0.06] transition"
-        >
-          <FontAwesomeIcon icon={faDownload} className="text-3xl" />
-          <div className="text-lg font-semibold">Download</div>
-        </a>
+        {song.isDownloadable ? (
+          <a
+            href={song.audioUrl}
+            download
+            className="rounded-2xl bg-black/30 border border-white/10 px-6 py-5 flex items-center gap-5 hover:bg-white/[0.06] transition"
+          >
+            <FontAwesomeIcon icon={faDownload} className="text-3xl" />
+            <div className="text-lg font-semibold">Download</div>
+          </a>
+        ) : (
+          <div className="rounded-2xl bg-black/20 border border-white/10 px-6 py-5 flex items-center gap-5 opacity-70 cursor-not-allowed">
+            <FontAwesomeIcon icon={faDownload} className="text-3xl" />
+            <div>
+              <div className="text-lg font-semibold">Download</div>
+              <div className="text-[11px] text-white/50">
+                Download disabled by the artist
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

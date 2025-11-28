@@ -1,3 +1,5 @@
+// app/(admin)/admin/team/page.tsx
+
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 import { getAdminCandidates } from "@/features/admin/server/candidates";

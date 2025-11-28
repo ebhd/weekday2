@@ -3,7 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-
+import { NotificationHost } from "@/features/notifications/NotificationHost";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 import { AuthHydrator } from "@/features/auth/AuthHydrator";
 
@@ -36,10 +36,11 @@ export default async function RootLayout({
   return (
     <html lang="en" className=" text-white">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} antialiased  overflow-x-hidden`}
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased  overflow-x-hidden scroll-smooth`}
       >
         <AuthHydrator user={user} />
         {children}
+        <NotificationHost />
       </body>
     </html>
   );

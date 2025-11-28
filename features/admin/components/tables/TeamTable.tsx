@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { apiDelete, apiPatch } from "@/features/admin/client/adminApi";
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 
 export function TeamTable({
   initial,
@@ -51,12 +52,14 @@ export function TeamTable({
     setRows((prev) => prev.map((r) => (r.id === id ? updated : r)));
     onRoleChanged(updated);
     cancelEdit();
+    notifySuccess("Role updated successfully!");
   };
 
   const removeAdmin = async (id: string) => {
     await apiDelete(`/api/admin/team/${id}`);
     setRows((prev) => prev.filter((r) => r.id !== id));
     onRemoved(id);
+    notifySuccess("Admin removed from team successfully!");
   };
 
   const columns: ColumnDef<AdminTeamRow>[] = [

@@ -1,11 +1,16 @@
 // features/admin/types.ts
 import type { UserRole } from "@/features/auth/types";
+export type AdminArtistStatus =
+  | "pending"
+  | "approved"
+  | "rejected"
+  | "disabled";
 
 export type AdminStats = {
   totalAccounts: number;
   totalAdmins: number;
   totalArtists: number;
-  totalVisitors: number; // still 0 until analytics added
+  totalVisitors: number;
 };
 
 export type AdminUserRow = {
@@ -20,7 +25,7 @@ export type AdminArtistRow = {
   id: string;
   slug: string;
   display_name: string;
-  status: "approved" | "disabled";
+  status: AdminArtistStatus;
   created_at: string;
   user_email: string | null;
 };
@@ -35,6 +40,7 @@ export type AdminSongRow = {
   score: number;
   created_at: string;
   artist_name: string | null;
+  is_downloadable: boolean;
 };
 
 export type AdminTeamRow = {

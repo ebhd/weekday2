@@ -6,7 +6,8 @@ import { apiPatch } from "@/features/admin/client/adminApi";
 import type { AdminSubmitSongRow } from "@/features/admin/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
+import { SongPlayer } from "@/features/ranking/components/RankingTableParts/SongPlayer";
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 type Props = {
   initialSongs: AdminSubmitSongRow[];
 };
@@ -20,21 +21,30 @@ export function SubmitsClient({ initialSongs }: Props) {
     setError(null);
     setMutating((m) => ({ ...m, [songId]: true }));
 
-    // optimistic remove from list
     const prev = songs;
+    const songTitle = songs.find((s) => s.id === songId)?.title;
+
     setSongs((s) => s.filter((x) => x.id !== songId));
+
+    if (status === "approved") {
+      notifySuccess(`Approved the song "${songTitle}"`);
+    } else {
+      notifySuccess(`Rejected the song "${songTitle}"`);
+    }
 
     try {
       await apiPatch(`/api/admin/songs/${songId}/status`, { status });
     } catch (e: any) {
       console.error("moderate error", e);
+
       setSongs(prev);
       setError(e?.message ?? "Failed to update submission");
+
+      notifyError(`Failed to update the song "${songTitle}"`);
     } finally {
       setMutating((m) => ({ ...m, [songId]: false }));
     }
   }
-  
 
   return (
     <div className="space-y-4">
@@ -44,7 +54,7 @@ export function SubmitsClient({ initialSongs }: Props) {
         </div>
       )}
 
-      <Card className="bg-black/30 border-white/10">
+      <Card className="bg-surface border-white/10">
         <CardHeader>
           <CardTitle className="font-display text-xl">
             Pending songs ({songs.length})
@@ -62,7 +72,7 @@ export function SubmitsClient({ initialSongs }: Props) {
                 return (
                   <li
                     key={song.id}
-                    className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 md:flex-row md:items-center md:justify-between"
+                    className="flex flex-col gap-3 rounded-2xl border border-muted-fg/30 bg-surface px-4 py-3 md:flex-row md:items-center md:justify-between"
                   >
                     {/* left */}
                     <div className="min-w-0 space-y-1">
@@ -88,13 +98,7 @@ export function SubmitsClient({ initialSongs }: Props) {
                       </div>
 
                       {/* audio preview */}
-                      <audio
-                        controls
-                        preload="none"
-                        className="mt-2 w-full max-w-md"
-                      >
-                        <source src={song.audioUrl} />
-                      </audio>
+                      <SongPlayer url={song.audioUrl} />
                     </div>
 
                     {/* right actions */}

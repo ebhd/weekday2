@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { apiDelete, apiPatch } from "@/features/admin/client/adminApi";
 import { useRouter } from "next/navigation";
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 
 export function UsersTable({ initial }: { initial: AdminUserRow[] }) {
   const router = useRouter();
@@ -46,12 +47,14 @@ export function UsersTable({ initial }: { initial: AdminUserRow[] }) {
     setRows((prev) => prev.map((r) => (r.id === id ? { ...r, ...patch } : r)));
     router.refresh();
     cancelEdit();
+    notifySuccess("User updated successfully!");
   };
 
   const deleteRow = async (id: string) => {
     await apiDelete(`/api/admin/users/${id}`);
     setRows((prev) => prev.filter((r) => r.id !== id));
     router.refresh();
+    notifySuccess("User deleted successfully!");
   };
 
   const columns: ColumnDef<AdminUserRow>[] = [

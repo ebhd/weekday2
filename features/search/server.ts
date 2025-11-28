@@ -1,3 +1,5 @@
+// features/search/server.ts
+
 import "server-only";
 import { cache } from "react";
 import { supabase } from "@/lib/supabaseClient";

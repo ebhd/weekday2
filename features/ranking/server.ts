@@ -1,3 +1,4 @@
+// features/ranking/server.ts
 import "server-only";
 import { supabase } from "@/lib/supabaseClient";
 import type { RankingRowProps, ArtistRankingRow } from "./types";

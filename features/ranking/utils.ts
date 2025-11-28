@@ -1,3 +1,4 @@
+// features/ranking/utils.ts
 import type { Song } from "@/features/songs/types";
 
 export function computeSongScore(song: Song): number {

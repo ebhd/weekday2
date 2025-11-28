@@ -1,3 +1,4 @@
+// features/ranking/types.ts
 export type RankingRowProps = {
   rank: number;
 

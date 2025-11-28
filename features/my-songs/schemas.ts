@@ -1,3 +1,4 @@
+// features/my-songs/schemas.ts
 import { z } from "zod";
 
 export const zCreateSongBody = z.object({
@@ -11,4 +12,5 @@ export const zUpdateSongBody = z.object({
     .min(3)
     .max(60)
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug must be kebab-case"),
+  isDownloadable: z.boolean(),
 });

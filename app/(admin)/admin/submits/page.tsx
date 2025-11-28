@@ -1,3 +1,5 @@
+// app/(admin)/admin/submits/page.tsx
+
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 import { getPendingSongs } from "@/features/admin/server/submits";

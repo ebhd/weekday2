@@ -12,6 +12,7 @@ import {
   FieldSeparator,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { notifyError, notifySuccess } from "@/features/notifications/store";
 
 export function LoginForm({
   className,
@@ -53,6 +54,7 @@ export function LoginForm({
       }
 
       router.push("/");
+      notifySuccess("Login successful!");
       router.refresh();
     } catch (err) {
       console.error("login error", err);

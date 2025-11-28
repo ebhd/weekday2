@@ -1,3 +1,5 @@
+// app/api/profile/artist/songs/[songId]/route.ts
+
 import "server-only";
 
 import { NextResponse } from "next/server";

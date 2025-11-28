@@ -1,3 +1,4 @@
+// features/admin/server.ts
 import "server-only";
 import { supabase } from "@/lib/supabaseClient";
 import type { AdminStats } from "./types";

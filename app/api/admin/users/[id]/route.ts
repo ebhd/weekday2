@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { adminGuard } from "../../_utils";
 import { supabase } from "@/lib/supabaseClient";
+import { cleanupUserAssets } from "@/features/storage/server/cleanup";
 
 const zPatchUser = z.object({
   username: z.string().min(1).max(32).nullable().optional(),
@@ -72,6 +73,7 @@ export async function DELETE(
     );
   }
 
+  await cleanupUserAssets(id);
   const { error } = await supabase.from("users").delete().eq("id", id);
 
   if (error) {

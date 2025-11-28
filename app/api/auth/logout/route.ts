@@ -1,3 +1,4 @@
+// app/api/auth/logout/route.ts
 import "server-only";
 import { NextResponse } from "next/server";
 import { clearAuthCookies } from "../_utils";

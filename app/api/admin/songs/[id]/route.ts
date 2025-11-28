@@ -8,6 +8,7 @@ import { supabase } from "@/lib/supabaseClient";
 const zPatchSong = z.object({
   title: z.string().min(1).max(80).optional(),
   status: z.enum(["pending", "approved", "rejected", "disabled"]).optional(),
+  is_downloadable: z.boolean().optional(),
 });
 
 export async function PATCH(
@@ -33,7 +34,7 @@ export async function PATCH(
     .update(parsed.data)
     .eq("id", id)
     .select(
-      "id, slug, title, status, play_count, like_count, score, created_at"
+      "id, slug, title, status, play_count, like_count, score, created_at, is_downloadable"
     )
     .maybeSingle();
 

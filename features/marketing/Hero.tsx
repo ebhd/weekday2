@@ -19,10 +19,10 @@ export function Hero() {
 
       <div className="mt-4 flex  space-y-2 lg:flex-row space-x-4 ">
         <Button size="lg" variant="default" asChild>
-          <Link href="/explore">Explore ranking</Link>
+          <Link href="#ranking-table">Explore ranking</Link>
         </Button>
         <Button size="lg" variant="outline" asChild>
-          <Link href="/register">Create an accounts</Link>
+          <Link href="/register">Create an account</Link>
         </Button>
       </div>
     </section>

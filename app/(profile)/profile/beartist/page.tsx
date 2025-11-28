@@ -1,3 +1,5 @@
+// app/(profile)/profile/beartist/page.tsx
+
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 import { BeArtistForm } from "@/features/profile/components/BeAnArtist";
