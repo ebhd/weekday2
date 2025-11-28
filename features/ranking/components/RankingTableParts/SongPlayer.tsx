@@ -59,7 +59,7 @@ export function SongPlayer({
       </button>
 
       {/* Waveform  */}
-      <div className="hidden md:block flex-1 max-w-[350px]">
+      <div className="hidden xl:block flex-1 max-w-[350px]">
         {url ? (
           <WavesurferPlayer
             key={url}

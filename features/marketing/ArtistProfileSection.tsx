@@ -34,8 +34,6 @@ export function ArtistProfileSection({
 }) {
   return (
     <section className="mx-auto w-full max-w-6xl rounded-3xl bg-surface/95 border border-white/10 shadow-lg shadow-black/20 my-20">
-    
-
       <div className="px-6 sm:px-8 lg:px-10 pb-8 pt-8">
         <div className="relative h-40 sm:h-48 md:h-56 lg:h-64 overflow-hidden rounded-3xl">
           {artist.profile.bannerUrl ? (
@@ -50,7 +48,7 @@ export function ArtistProfileSection({
             <div className="h-full w-full bg-black/30" />
           )}
         </div>
-  
+
         <div className="flex items-center gap-4 mt-4">
           <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full ring-2 ring-white/20 overflow-hidden bg-black/30">
             <Image
@@ -102,7 +100,7 @@ export function ArtistProfileSection({
         <div className="mt-8">
           <h2 className="text-sm text-white/80">Uploaded content</h2>
           <p className="text-xs text-white/50">
-            Musics that {artist.name} created on Drillrecord.
+            Musics that {artist.name} created on The Weekday.
           </p>
 
           <div className="mt-3 rounded-2xl border border-white/10 overflow-hidden">

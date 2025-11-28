@@ -81,7 +81,7 @@ export function Faq() {
           </h2>
 
           <p className="text-center text-muted-fg">
-            Get answer to the most questions about DrillRecord and our services.
+            Get answer to the most questions about The Weekday and our services.
           </p>
 
           <Faq1 />
@@ -93,7 +93,7 @@ export function Faq() {
               Be an Artist Today!
             </h1>
             <p className="text-xs text-center text-muted-fg ">
-              Join Drillrecord and take your first step towards becoming a
+              Join The Weekday and take your first step towards becoming a
               recognized artist. <br />
               Upload your tracks, grow your audience, and rise through the
               ranks.

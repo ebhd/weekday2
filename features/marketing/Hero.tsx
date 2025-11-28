@@ -7,7 +7,7 @@ export function Hero() {
     <section className="flex w-full flex-col h-72 lg:h-[28rem] items-center justify-center text-center font-display">
       <div className="z-10 text-[1.8rem]/[1.1] text-white lg:text-7xl ">
         <h1>Ranking The Underground</h1>
-        <h1>Drill Scene Worldwide</h1>
+        <h1>Music Scene Worldwide</h1>
       </div>
       <div>
         <p className="mt-1 max-w-2xl text-xs lg:text-base px-5 text-muted-fg font-sans">
