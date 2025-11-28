@@ -23,7 +23,7 @@ const team: TeamMember[] = [
     role: "Full-Stack Developer",
     description:
       "Ik ben een software engineer met een passie voor technologie, design en muziekcultuur. Ik bouw platforms die artiesten helpen zich te uiten en nieuwe doelgroepen te bereiken, en zet met mijn achtergrond in toegepaste informatica ideeën om in sterke digitale ervaringen voor de undergroundscene.",
-    imageSrc: "/team/ebrahim.jfif",
+    imageSrc: "/team/ebrahim.jpg",
     linkedinUrl: "https://www.linkedin.com/in/ebrahim-hdida",
     strengths: ["Ideeën", "Doorzetten", "Creatief"],
   },
