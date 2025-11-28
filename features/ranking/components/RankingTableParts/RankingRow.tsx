@@ -15,16 +15,17 @@ export function RankingRow(props: Props) {
   return (
     <div
       className={`
-        ${rankingDesktopGrid} ${rankingMobileGrid} px-4 py-2
-        gap-y-3 md:gap-y-0
-        border-b border-white/10
-      `}
+    ${rankingDesktopGrid} ${rankingMobileGrid}
+    px-4 lg:px-8 py-2
+    gap-y-3 md:gap-y-0
+    border-b border-white/10
+  `}
     >
       <div className="text-center font-display text-4xl md:text-5xl">
         {props.rank}.
       </div>
 
-      <div className="flex items-center gap-3 justify-start w-full md:pl-20 min-w-0">
+      <div className="flex items-center gap-3 justify-start w-full min-w-0 overflow-hidden">
         <Image
           src={props.artistImageUrl || "/default-avatar.png"}
           alt={props.artistName}

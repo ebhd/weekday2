@@ -18,7 +18,7 @@ type RankingTableProps = {
   hasMore: boolean;
   onLoadMore: () => void;
   onToggleHeart?: (songId: string) => void;
-  onPlayProgress?: (songId: string, secondsPlayed: number) => void; // 👈 NEW
+  onPlayProgress?: (songId: string, secondsPlayed: number) => void; 
 };
 
 export function RankingTable({

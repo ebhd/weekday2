@@ -38,7 +38,7 @@ export function SongPlayer({
   const disabled = !url;
 
   return (
-    <div className="flex items-center space-x-2 w-full">
+    <div className="flex items-center w-full justify-center 2xl:justify-start gap-2">
       {/* Play / Pause button */}
       <button
         onClick={onPlayPause}
@@ -59,7 +59,7 @@ export function SongPlayer({
       </button>
 
       {/* Waveform  */}
-      <div className="hidden xl:block flex-1 max-w-[350px]">
+      <div className="hidden 2xl:block flex-1 max-w-[350px] overflow-hidden ">
         {url ? (
           <WavesurferPlayer
             key={url}
