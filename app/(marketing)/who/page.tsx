@@ -32,7 +32,7 @@ const team: TeamMember[] = [
     role: "Project Coordinator",
     description:
       "I have a strong interest in programming, data and everything related to technology. For me writing code kind of feels like writing a track, experimenting, layering ideas and fine tuning until everything falls in place. I love working on projects where I can mix logic with creativity, turning logical problems into something that flows.",
-    imageSrc: "/team/alfie.png",
+    imageSrc: "/team/alfie.jpg",
     linkedinUrl:
       "https://www.linkedin.com/in/alfie-ferrolino-vercammen-226b41342/",
     strengths: ["Plannen", "Samenwerken", "Overzicht"],
@@ -51,7 +51,7 @@ const team: TeamMember[] = [
     role: "Project Manager (SPOC)",
     description:
       "Ik ben Yasmine, een grote liefhebber van upcoming artists en nieuwe sounds. Ik vind het het heel belangrijk om nieuwe talenten te ontdekken, hun vibe te begrijpen en hun verhaal een plek te geven op onze website. Altijd op zoek naar nieuwe genres en een interessante aanpak op muziek!",
-    imageSrc: "/team/yasmine.jfif",
+    imageSrc: "/team/yasmine.jpg",
     linkedinUrl: "https://www.linkedin.com/in/yasmine-rahou-07b014399/",
     strengths: ["Communicatie", "Leiden", "Vriendelijk"],
   },
