@@ -39,7 +39,7 @@ const team: TeamMember[] = [
   },
   {
     name: "Ilias Benabdellah",
-    role: "BResearch and content",
+    role: "Research and content",
     description:
       "Ik ben Ilias Ben Abdellah. Ik ben niet de grootste prater en ik hoef ook niet per se mijn mening door te drukken. Ik ben meer van het gewoon doen, zorgen dat dingen gebeuren zonder al te veel gedoe. Precies daarom spreekt de underground scene me aan. De artiesten zijn vaak mensen die gefocust zijn op hun werk. Het draait niet om streams of geld, maar vooral om de drang om iets te maken.",
     imageSrc: "/team/illias.jpg",
