@@ -89,7 +89,7 @@ export function Navbar() {
               href="/about"
               className="relative inline-block no-underline after-line"
             >
-              Overons
+              Over ons
             </Link>
           </li>
           <li>
@@ -98,6 +98,14 @@ export function Navbar() {
               className="relative inline-block no-underline after-line"
             >
               Wie is Wie
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/blog"
+              className="relative inline-block no-underline after-line"
+            >
+              Blogs
             </Link>
           </li>
         </ul>

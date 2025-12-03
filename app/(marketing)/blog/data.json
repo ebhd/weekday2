@@ -1,0 +1,335 @@
+[
+  {
+    "id": 1,
+    "slug": "struggle-of-underground-artists",
+    "title": "Struggle of underground artists",
+    "author": {
+      "id": "ebrahim-hdida",
+      "name": "Ebrahim Hdida"
+    },
+    "publishedAt": "2025-01-01",
+    "readingTimeMinutes": 5,
+    "tags": ["blogging", "getting-started", "writing"],
+    "content": "This is example seed content for your blog system. It shows how you might structure text, titles and metadata in a real application. In production this text would likely come from a CMS, database, or markdown files.",
+    "comments": [
+      {
+        "id": "c-1-1",
+        "author": "Demo User",
+        "text": "Nice intro, really easy to follow.",
+        "createdAt": "2025-01-02"
+      },
+      {
+        "id": "c-1-2",
+        "author": "Anonymous",
+        "text": "Thanks, this helps me plan my first post.",
+        "createdAt": "2025-01-03"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "how-i-plan-my-content-calendar",
+    "title": "How I Plan My Content Calendar",
+    "author": {
+      "id": "liam-carter",
+      "name": "Liam Carter"
+    },
+    "publishedAt": "2025-01-03",
+    "readingTimeMinutes": 6,
+    "tags": ["planning", "productivity", "workflow"],
+    "content": "In this example post we walk through a simple content planning workflow. Use this as seed data to test list views, detail views and date formatting.",
+    "comments": [
+      {
+        "id": "c-2-1",
+        "author": "Reader01",
+        "text": "The weekly planning idea is great.",
+        "createdAt": "2025-01-04"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "why-consistency-beats-perfection",
+    "title": "Why Consistency Beats Perfection",
+    "author": {
+      "id": "liam-carter",
+      "name": "Liam Carter"
+    },
+    "publishedAt": "2025-01-05",
+    "readingTimeMinutes": 4,
+    "tags": ["mindset", "productivity", "writing"],
+    "content": "Another sample blog post. Use this to test how your UI handles slightly longer titles and different tag combinations across posts.",
+    "comments": [
+      {
+        "id": "c-3-1",
+        "author": "Guest",
+        "text": "Needed this reminder today.",
+        "createdAt": "2025-01-06"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "designing-a-clean-blog-layout",
+    "title": "Designing a Clean Blog Layout",
+    "author": {
+      "id": "maya-lopez",
+      "name": "Maya Lopez"
+    },
+    "publishedAt": "2025-01-07",
+    "readingTimeMinutes": 7,
+    "tags": ["design", "ui", "frontend"],
+    "content": "This seed post talks about layout and spacing. Perfect for testing how your design system renders headings, paragraphs and tags.",
+    "comments": [
+      {
+        "id": "c-4-1",
+        "author": "Demo User",
+        "text": "Love the focus on whitespace.",
+        "createdAt": "2025-01-08"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "seo-basics-for-new-bloggers",
+    "title": "SEO Basics For New Bloggers",
+    "author": {
+      "id": "maya-lopez",
+      "name": "Maya Lopez"
+    },
+    "publishedAt": "2025-01-09",
+    "readingTimeMinutes": 8,
+    "tags": ["seo", "basics", "traffic"],
+    "content": "Sample content explaining very basic SEO ideas. Use it to test meta tags, preview cards and search results in your app.",
+    "comments": [
+      {
+        "id": "c-5-1",
+        "author": "Anonymous",
+        "text": "The keyword checklist is helpful.",
+        "createdAt": "2025-01-10"
+      },
+      {
+        "id": "c-5-2",
+        "author": "Reader01",
+        "text": "Would love an advanced follow-up.",
+        "createdAt": "2025-01-11"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "how-to-write-your-first-blog-post",
+    "title": "How To Write Your First Blog Post",
+    "author": {
+      "id": "maya-lopez",
+      "name": "Maya Lopez"
+    },
+    "publishedAt": "2025-01-11",
+    "readingTimeMinutes": 5,
+    "tags": ["writing", "beginners", "tutorial"],
+    "content": "This seed article breaks the writing process into simple steps. Great for testing long-form content rendering in your blog layout.",
+    "comments": [
+      {
+        "id": "c-6-1",
+        "author": "Guest",
+        "text": "Step-by-step structure is really clear.",
+        "createdAt": "2025-01-12"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "slug": "building-a-personal-brand-online",
+    "title": "Building A Personal Brand Online",
+    "author": {
+      "id": "noah-kim",
+      "name": "Noah Kim"
+    },
+    "publishedAt": "2025-01-13",
+    "readingTimeMinutes": 6,
+    "tags": ["branding", "social-media", "career"],
+    "content": "This is demo content about building a personal brand. Use this post to test author filters and tag filters in your UI.",
+    "comments": [
+      {
+        "id": "c-7-1",
+        "author": "Demo User",
+        "text": "The examples are super relatable.",
+        "createdAt": "2025-01-14"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "what-i-learned-from-writing-daily",
+    "title": "What I Learned From Writing Daily",
+    "author": {
+      "id": "noah-kim",
+      "name": "Noah Kim"
+    },
+    "publishedAt": "2025-01-15",
+    "readingTimeMinutes": 4,
+    "tags": ["habits", "writing", "productivity"],
+    "content": "Use this example post to test date ordering, newest-first sorting and how your app displays multiple posts by the same author.",
+    "comments": [
+      {
+        "id": "c-8-1",
+        "author": "Anonymous",
+        "text": "Daily writing sounds intense but fun.",
+        "createdAt": "2025-01-16"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "five-mistakes-i-made-as-a-beginner",
+    "title": "5 Mistakes I Made As A Beginner",
+    "author": {
+      "id": "noah-kim",
+      "name": "Noah Kim"
+    },
+    "publishedAt": "2025-01-17",
+    "readingTimeMinutes": 6,
+    "tags": ["mistakes", "learning", "blogging"],
+    "content": "Another short sample post listing common beginner mistakes. Good for testing bullet lists or numbered lists if you add them later.",
+    "comments": [
+      {
+        "id": "c-9-1",
+        "author": "Reader01",
+        "text": "Relatable, I made all of these.",
+        "createdAt": "2025-01-18"
+      },
+      {
+        "id": "c-9-2",
+        "author": "Guest",
+        "text": "Nice to see honest lessons learned.",
+        "createdAt": "2025-01-19"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "slug": "how-to-stay-motivated-to-write",
+    "title": "How To Stay Motivated To Write",
+    "author": {
+      "id": "sara-ibrahim",
+      "name": "Sara Ibrahim"
+    },
+    "publishedAt": "2025-01-19",
+    "readingTimeMinutes": 5,
+    "tags": ["motivation", "writing", "mindset"],
+    "content": "This is seed content focused on motivation and routines. Perfect to test how your app shows related posts by topic or tag.",
+    "comments": [
+      {
+        "id": "c-10-1",
+        "author": "Demo User",
+        "text": "The small-habit idea is gold.",
+        "createdAt": "2025-01-20"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "slug": "the-power-of-micro-content",
+    "title": "The Power Of Micro Content",
+    "author": {
+      "id": "sara-ibrahim",
+      "name": "Sara Ibrahim"
+    },
+    "publishedAt": "2025-01-21",
+    "readingTimeMinutes": 3,
+    "tags": ["content", "short-form", "social-media"],
+    "content": "Short example post about turning long ideas into micro content. Use it to test teaser components or cards with short excerpts.",
+    "comments": [
+      {
+        "id": "c-11-1",
+        "author": "Anonymous",
+        "text": "Micro content is so much easier to start with.",
+        "createdAt": "2025-01-22"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "slug": "how-i-collect-ideas-for-posts",
+    "title": "How I Collect Ideas For Posts",
+    "author": {
+      "id": "sara-ibrahim",
+      "name": "Sara Ibrahim"
+    },
+    "publishedAt": "2025-01-23",
+    "readingTimeMinutes": 4,
+    "tags": ["ideas", "creativity", "workflow"],
+    "content": "Seed article showing how to capture and organize ideas. Useful sample for testing search, filtering and tag-based navigation.",
+    "comments": [
+      {
+        "id": "c-12-1",
+        "author": "Guest",
+        "text": "Love the idea inbox approach.",
+        "createdAt": "2025-01-24"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "slug": "simple-analytics-to-track",
+    "title": "Simple Analytics To Track",
+    "author": {
+      "id": "jonas-vermeulen",
+      "name": "Jonas Vermeulen"
+    },
+    "publishedAt": "2025-01-25",
+    "readingTimeMinutes": 5,
+    "tags": ["analytics", "metrics", "growth"],
+    "content": "This example post talks about basic analytics for blogs. Great for testing stats widgets, dashboards or summary sections.",
+    "comments": [
+      {
+        "id": "c-13-1",
+        "author": "Demo User",
+        "text": "Good reminder not to track everything.",
+        "createdAt": "2025-01-26"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "slug": "improving-your-writing-over-time",
+    "title": "Improving Your Writing Over Time",
+    "author": {
+      "id": "jonas-vermeulen",
+      "name": "Jonas Vermeulen"
+    },
+    "publishedAt": "2025-01-27",
+    "readingTimeMinutes": 7,
+    "tags": ["writing", "practice", "skills"],
+    "content": "Sample article about continuous improvement. Use this to test longer reading times and how your UI shows estimated reading time.",
+    "comments": [
+      {
+        "id": "c-14-1",
+        "author": "Anonymous",
+        "text": "The before/after examples are helpful.",
+        "createdAt": "2025-01-28"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "slug": "balancing-school-and-side-projects",
+    "title": "Balancing School And Side Projects",
+    "author": {
+      "id": "jonas-vermeulen",
+      "name": "Jonas Vermeulen"
+    },
+    "publishedAt": "2025-01-29",
+    "readingTimeMinutes": 6,
+    "tags": ["life", "balance", "productivity"],
+    "content": "Final seed post in this data set. It’s ideal for testing pagination, infinite scroll or any kind of ‘load more’ behaviour in your blog.",
+    "comments": [
+      {
+        "id": "c-15-1",
+        "author": "Reader01",
+        "text": "This feels very realistic for students.",
+        "createdAt": "2025-01-30"
+      }
+    ]
+  }
+]
