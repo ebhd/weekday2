@@ -21,7 +21,9 @@ export default function Blog() {
 
   return (
     <main className="min-h-screen md:px-48 px-4 bg-background text-foreground">
-      <div className="mx-auto px-4 py-10 sm:py-12 lg:py-16">
+      <h1 className="text-5xl">NOT IMPLEMENTED YET</h1>
+
+      {/* <div className="mx-auto px-4 py-10 sm:py-12 lg:py-16">
         
         <header className="mb-8 sm:mb-10">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-secondary">
@@ -97,7 +99,7 @@ export default function Blog() {
             </Link>
           ))}
         </section>
-      </div>
+      </div> */}
     </main>
   );
 }
