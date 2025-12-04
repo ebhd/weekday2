@@ -1,4 +1,3 @@
-// app/(marketing)/artists/[artistSlug]/not-found.tsx
 
 export default function NotFound() {
 

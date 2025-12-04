@@ -43,24 +43,17 @@ export function RankingHomeSectionClient({ songRows, artistRows }: Props) {
     setVisibleCount((prev) => Math.min(prev + 3, totalSongs));
   };
 
-  // ---------------------------
-  // Fetch current user reactions for visible songs only
-  // ---------------------------
+
   const visibleSongIds = useMemo(
     () => visibleRows.map((r) => r.songId),
     [visibleRows]
   );
   const reactionsMap = useSongReactions(visibleSongIds);
 
-  // ---------------------------
-  // Optimistic override map
-  // (IMPORTANT: null must be respected; don't use ??)
-  // ---------------------------
   const [optimistic, setOptimistic] = useState<
     Record<string, ReactionType | null | undefined>
   >({});
 
-  // If user changes (logout/login), reset optimistic state
   useEffect(() => {
     setOptimistic({});
   }, [user?.id]);

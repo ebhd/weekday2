@@ -8,7 +8,7 @@ import { RankingRow } from "./RankingTableParts/RankingRow";
 import type { RankingRowProps } from "@/features/ranking/types";
 
 export const rankingDesktopGrid =
-  "lg:grid lg:grid-cols-[60px_1.5fr_2fr_0.5fr] lg:items-center lg:gap-x-8";
+  "lg:grid lg:grid-cols-[70px_minmax(0,2fr)_minmax(0,2.5fr)_minmax(0,1fr)] lg:items-center lg:gap-x-10";
 
 export const rankingMobileGrid =
   "grid grid-cols-[90px_minmax(0,2fr)_minmax(0,1fr)_minmax(0,2fr)] items-center gap-x-4";
@@ -18,7 +18,7 @@ type RankingTableProps = {
   hasMore: boolean;
   onLoadMore: () => void;
   onToggleHeart?: (songId: string) => void;
-  onPlayProgress?: (songId: string, secondsPlayed: number) => void; 
+  onPlayProgress?: (songId: string, secondsPlayed: number) => void; // 👈 NEW
 };
 
 export function RankingTable({
@@ -32,7 +32,7 @@ export function RankingTable({
     <div>
       <div
         id="ranking-table"
-        className="rounded-2xl text-white bg-linear-to-b from-accent/40 to-secondary/30 border border-muted-fg backdrop-blur-md shadow-lg shadow-black/20 overflow-hidden font-sans"
+        className="w-full  rounded-2xl text-white bg-linear-to-b from-accent/40 to-secondary/30 border border-muted-fg backdrop-blur-md shadow-lg shadow-black/20 overflow-hidden font-sans"
       >
         {/* HEADER */}
         <div

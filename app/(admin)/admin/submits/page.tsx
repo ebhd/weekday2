@@ -1,4 +1,3 @@
-// app/(admin)/admin/submits/page.tsx
 
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/currentUser";

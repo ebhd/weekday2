@@ -47,7 +47,7 @@ export function SectionCards({ stats }: { stats: AdminStats }) {
       <StatsCard
         title="Total Visitors"
         value={totalVisitors.toLocaleString()}
-        subtitle="Total visitors of drillrecord.com"
+        subtitle="Total visitors of theweekday.co"
         description="Mobile & desktop visitors included"
       />
       <StatsCard

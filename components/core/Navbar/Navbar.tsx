@@ -61,10 +61,15 @@ export function Navbar() {
       {/* === Navbar Bar === */}
       <nav className="flex justify-between items-center pt-5 text-sm font-sans relative z-[1000]">
         {/* --- Logo --- */}
-        <h1 className="font-medium font-display text-2xl antialiased">
-          The <span className="text-primary">Week</span>
-          <span className="text-secondary">day </span>
-        </h1>
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt="weekday logo"
+            width={145}
+            height={60}
+            className="mr-4"
+          />
+        </Link>
 
         {/* --- Desktop Menu --- */}
         <ul className="hidden md:flex gap-x-12 text-white">

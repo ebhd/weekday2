@@ -1,4 +1,3 @@
-// app/(marketing)/layout.tsx
 
 import "../globals.css";
 import { defaultSEO } from "@/config/seo";

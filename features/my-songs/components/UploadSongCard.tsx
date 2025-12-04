@@ -55,7 +55,6 @@ export function UploadSongCard({ onCreated }: Props) {
     setUploading(true);
 
     try {
-      // 1) ask server for signed upload URL
       const prepRes = await fetch("/api/profile/artist/songs/upload-url", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -79,7 +78,6 @@ export function UploadSongCard({ onCreated }: Props) {
         publicUrl: string;
       };
 
-      // 2) upload directly to Supabase storage using signed token
       const { error: upErr } = await supabaseBrowser.storage
         .from(STORAGE_BUCKET)
         .uploadToSignedUrl(path, token, file, {
@@ -93,7 +91,6 @@ export function UploadSongCard({ onCreated }: Props) {
         return;
       }
 
-      // 3) create DB row
       const createRes = await fetch("/api/profile/artist/songs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

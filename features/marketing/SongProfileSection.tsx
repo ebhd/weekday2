@@ -45,7 +45,6 @@ export function SongProfileSection({
   const [serverHearts, setServerHearts] = useState(song.stats.likes ?? 0);
   const [serverDislikes, setServerDislikes] = useState(0);
 
-  // 👇 local views state so UI updates when we report a play
   const [views, setViews] = useState(song.stats.views ?? 0);
   const [playReported, setPlayReported] = useState(false);
 
@@ -117,9 +116,7 @@ export function SongProfileSection({
     );
   }, [artists, song.artist]);
 
-  // 👇 Called when player reports enough playback time
   async function handlePlayProgress(secondsPlayed: number) {
-    // Only send one "play" per page load, and only after e.g. 10s
     const THRESHOLD_SECONDS = 10;
 
     if (playReported) return;
@@ -131,7 +128,6 @@ export function SongProfileSection({
     if (typeof newCount === "number") {
       setViews(newCount);
     } else {
-      // if API fails, don't revert playReported to avoid spam
       console.warn("Play report failed, keeping local state");
     }
   }

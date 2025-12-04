@@ -1,4 +1,3 @@
-// app/(marketing)/page.tsx
 
 import { Hero } from "@/features/marketing/Hero";
 import { RankingHomeSection } from "@/features/marketing/components/ranking-home/RankingHomeSection";

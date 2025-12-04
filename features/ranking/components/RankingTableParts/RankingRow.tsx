@@ -13,14 +13,14 @@ type Props = RankingRowProps & {
 
 export function RankingRow(props: Props) {
   return (
-<div
-  className={`
+    <div
+      className={`
     ${rankingDesktopGrid} ${rankingMobileGrid}
     px-4 lg:px-8 py-2
     gap-y-3 md:gap-y-0
     border-b border-white/10
   `}
->
+    >
       <div className="text-center font-display text-4xl md:text-5xl">
         {props.rank}.
       </div>

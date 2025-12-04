@@ -47,7 +47,7 @@ export function AppSidebar({
             >
               <Link href="/">
                 <Image
-                  src="/drillrecord.png"
+                  src="/logo.png"
                   alt="The Weekday logo"
                   width={100}
                   height={50}
