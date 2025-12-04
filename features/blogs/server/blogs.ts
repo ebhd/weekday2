@@ -27,8 +27,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
       )
     `
     )
-    .eq("status", "published")
-    .order("published_at", { ascending: false });
+    .eq("status", "published");
 
   if (error) {
     console.error("Error fetching posts", error);
@@ -40,13 +39,13 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
       "ebrahim-hdida": "/team/ebrahim.jpg",
       "alfie-vercammen": "/team/alfie.jpg",
       "dries-vanderstukken": "/team/dries.jpg",
-      "ilias-benabdellah": "/team/illias.jpg", // you wrote /team/illias.jpg
+      "ilias-benabdellah": "/team/illias.jpg",
       "yasmine-rahou": "/team/yasmine.jpg",
     };
     return map[handle] ?? null;
   };
 
-  return (data ?? []).map(
+  const posts: BlogPost[] = (data ?? []).map(
     (p: any): BlogPost => ({
       id: p.id,
       slug: p.slug,
@@ -64,6 +63,13 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
       comments: [],
     })
   );
+
+  for (let i = posts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [posts[i], posts[j]] = [posts[j], posts[i]];
+  }
+
+  return posts;
 }
 
 export async function getBlogPostBySlug(
