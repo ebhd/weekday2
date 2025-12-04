@@ -13,7 +13,7 @@ export default async function Blog() {
             Blog
           </p>
           <h1 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold">
-            Latest articles
+            Latest Blogs
           </h1>
           <p className="mt-3 max-w-2xl text-sm sm:text-base text-muted-fg">
             Read insights, research, and updates from our authors. Click a post
