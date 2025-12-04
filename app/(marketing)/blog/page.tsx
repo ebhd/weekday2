@@ -6,7 +6,7 @@ export default async function Blog() {
   const posts = await getAllBlogPosts();
 
   return (
-    <main className="min-h-screen md:px-48 px-4 bg-background text-foreground">
+    <main className="min-h-screen xl:px-48 lg:px-20 md:px-10 px-4 bg-background text-foreground">
       <div className="mx-auto px-4 py-10 sm:py-12 lg:py-16">
         <header className="mb-8 sm:mb-10">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-secondary">
@@ -21,16 +21,14 @@ export default async function Blog() {
           </p>
         </header>
 
-        <section className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <section className="grid gap-5 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
           {posts.map((post) => (
             <Link
               key={post.id}
               href={`/blog/${post.slug}`}
-              className="group relative rounded-2xl bg-gradient-to-br from-primary/10 via-border/20 to-secondary/20 p-[1px] transition-all duration-300 hover:from-primary/40 hover:via-secondary/40 hover:to-accent/40"
+              className="group block h-full relative rounded-2xl bg-gradient-to-br from-primary/10 via-border/20 to-secondary/20 p-[1px] transition-all duration-300 hover:from-primary/40 hover:via-secondary/40 hover:to-accent/40"
             >
-              {/* Inner card */}
               <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-surface/95 px-4 py-4 sm:px-5 sm:py-5 backdrop-blur-sm transition-all duration-300 group-hover:border-primary/80 group-hover:shadow-[0_0_17px_rgba(64,255,80,0.25)]">
-                {/* Slug + date + reading time */}
                 <div className="mb-2 flex items-center justify-between text-[0.7rem] text-muted-fg">
                   <span className="font-mono truncate max-w-[55%] opacity-80">
                     {post.slug}
@@ -67,8 +65,7 @@ export default async function Blog() {
                     <p className="text-xs sm:text-sm text-muted-fg/90 line-clamp-3">
                       {post.content}
                     </p>
-                    {/* fade-out at bottom of preview */}
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-surface via-surface/70 to-transparent " />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-surface via-surface/70 to-transparent" />
                   </div>
                 )}
 
@@ -108,7 +105,6 @@ export default async function Blog() {
                   </div>
                 )}
 
-                {/* Bottom gradient accent line */}
                 <div className="pointer-events-none mt-4 h-px w-full bg-gradient-to-r from-primary via-secondary to-accent opacity-70 group-hover:opacity-100" />
               </div>
             </Link>

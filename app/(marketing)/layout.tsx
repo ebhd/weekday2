@@ -1,4 +1,3 @@
-
 import "../globals.css";
 import { defaultSEO } from "@/config/seo";
 import { Navbar } from "@/components/core/Navbar/Navbar";
@@ -19,7 +18,7 @@ export default async function MarketingLayout({
     <div className="min-h-screen flex flex-col">
       <BackgroundFx />
 
-      <div className="md:px-48 px-4">
+      <div className="xl:px-48 lg:px-20 md:px-10 px-4">
         <Navbar />
       </div>
 
