@@ -1,39 +1,57 @@
 import { SongPlayer } from "@/features/ranking/components/RankingTableParts/SongPlayer";
 import { TextBar } from "@/components/core/TextBar";
+import Image from "next/image";
 export default function InterviewPage() {
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)]">
       <main className="relative mx-auto max-w-5xl px-4 py-12 md:py-16 space-y-12">
-        <header className="space-y-4">
-          <TextBar text="Interview • The Weekday"></TextBar>
+        <header className="space-y-6">
+          <TextBar text="Interview • The Weekday" />
 
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight font-display">
-            Interview met{" "}
-            <span className="text-[var(--color-primary)]">Paul Cailly</span>
-          </h1>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="flex-1 space-y-4">
+              <h1 className="text-3xl md:text-4xl font-semibold tracking-tight font-display">
+                Interview met{" "}
+                <span className="text-[var(--color-primary)]">Paul Cailly</span>
+              </h1>
 
-          <p className="text-sm md:text-base text-[var(--color-muted-fg)] max-w-xl">
-            Voor The Weekday spraken we met{" "}
-            <span className="text-[var(--color-foreground)] font-medium">
-              Paul Cailly
-            </span>
-            , Software Engineer bij Deezer in Parijs, één van de grote
-            internationale muziekstreamingplatformen. Al meer dan zes jaar werkt
-            hij aan de frontend, partnerintegraties en de Deezer-ervaring op
-            Smart TV&apos;s, smart speakers en Chromecast. Hij gaf ons concrete
-            tips over hoe je een muziekplatform ontwerpt, test en laat groeien.
-          </p>
+              <p className="text-sm md:text-base text-[var(--color-muted-fg)] max-w-xl">
+                Voor The Weekday spraken we met{" "}
+                <span className="text-[var(--color-foreground)] font-medium">
+                  Paul Cailly
+                </span>
+                , Software Engineer bij Deezer in Parijs, één van de grote
+                internationale muziekstreamingplatformen. Al meer dan zes jaar
+                werkt hij aan de frontend, partnerintegraties en de
+                Deezer-ervaring op Smart TV&apos;s, smart speakers en
+                Chromecast. Hij gaf ons concrete tips over hoe je een
+                muziekplatform ontwerpt, test en laat groeien.
+              </p>
 
-          <div className="flex flex-wrap gap-2 text-[11px] text-[var(--color-muted-fg)]">
-            <span className="rounded-full border border-[var(--color-border)] bg-black/30 px-3 py-1">
-              Software Engineer @ Deezer
-            </span>
-            <span className="rounded-full border border-[var(--color-border)] bg-black/30 px-3 py-1">
-              Frontend & partnerships
-            </span>
-            <span className="rounded-full border border-[var(--color-border)] bg-black/30 px-3 py-1">
-              React / JS / TS
-            </span>
+              <div className="flex flex-wrap gap-2 text-[11px] text-[var(--color-muted-fg)]">
+                <span className="rounded-full border border-[var(--color-border)] bg-black/30 px-3 py-1">
+                  Software Engineer @ Deezer
+                </span>
+                <span className="rounded-full border border-[var(--color-border)] bg-black/30 px-3 py-1">
+                  Frontend & partnerships
+                </span>
+                <span className="rounded-full border border-[var(--color-border)] bg-black/30 px-3 py-1">
+                  React / JS / TS
+                </span>
+              </div>
+            </div>
+
+            <div className="md:w-48 lg:w-56 flex-shrink-0">
+              <div className="relative w-full h-48 md:h-52 lg:h-56 rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                <Image
+                  src="/paul.png"
+                  alt="Paul Cailly"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </div>
         </header>
 
@@ -55,7 +73,7 @@ export default function InterviewPage() {
                 <span className="font-medium text-[var(--color-foreground)]">
                   Rol:
                 </span>{" "}
-                Software Engineer bij Deezer (partnership team,  Smart TV,
+                Software Engineer bij Deezer (partnership team, Smart TV,
                 Chromecast, telecombundels)
               </li>
               <li>
@@ -148,7 +166,7 @@ export default function InterviewPage() {
                 begrijpen wat je code doet.
               </li>
               <li>
-                Coding is maar een deel van het werk, 
+                Coding is maar een deel van het werk,
                 <span className="text-[var(--color-foreground)]">
                   communicatie, samenwerken en requirements begrijpen
                 </span>{" "}

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Faq1 } from "./components/faq/FaqQA";
 import { TextBar } from "../../components/core/TextBar";
 import { Button } from "../../components/ui/button";
-
+import Link from "next/link";
 export function Gradient() {
   return (
     <div
@@ -102,7 +102,9 @@ export function Faq() {
               text="Be an artist and upload you artwork instantly"
               icon
             />
-            <Button>Get Started</Button>
+            <Link href="/register">
+              <Button className="cursor-pointer">Get Started</Button>
+            </Link>
           </div>
         </div>
       </div>
