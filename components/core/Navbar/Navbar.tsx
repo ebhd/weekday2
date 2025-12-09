@@ -134,7 +134,7 @@ export function Navbar() {
               href="/promovideo"
               className="relative inline-block no-underline after-line"
             >
-              Promo Video
+              Promovideo
             </Link>
           </li>
         </ul>
@@ -291,7 +291,7 @@ export function Navbar() {
               className="text-4xl sm:text-5xl font-semibold"
             >
               <Link href="/who" className="hover:text-gray-300 duration-200">
-               Blogs
+                Blogs
               </Link>
               <motion.hr
                 variants={hrVariant}
@@ -305,7 +305,7 @@ export function Navbar() {
               className="text-4xl sm:text-5xl font-semibold"
             >
               <Link href="/who" className="hover:text-gray-300 duration-200">
-               PromoVideo
+                Promovideo
               </Link>
               <motion.hr
                 variants={hrVariant}
