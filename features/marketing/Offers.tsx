@@ -60,7 +60,6 @@ export function OffersGradient() {
         </div>
       </div>
 
-      {/* GREEN SIDE GLOW – */}
       <div
         aria-hidden
         className="hidden lg:block absolute right-[-50%] top-1/2 -translate-y-1/2 pointer-events-none z-0"

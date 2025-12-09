@@ -14,7 +14,7 @@ export default function WebinarPage() {
           <TextBar text="Webinar • The Weekday" icon></TextBar>
 
           <div className="space-y-3">
-            <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
+            <h1 className="text-3xl font-semibold tracking-tight md:text-4xl font-display">
               TikTok, algorithms & the underground
             </h1>
             <p className="max-w-2xl text-sm leading-relaxed text-[var(--color-muted-fg)] md:text-base">

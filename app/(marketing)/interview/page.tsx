@@ -17,7 +17,7 @@ export default function InterviewPage() {
             <span className="text-[var(--color-foreground)] font-medium">
               Paul Cailly
             </span>
-            , Software Engineer bij Deezer in Parijs – één van de grote
+            , Software Engineer bij Deezer in Parijs, één van de grote
             internationale muziekstreamingplatformen. Al meer dan zes jaar werkt
             hij aan de frontend, partnerintegraties en de Deezer-ervaring op
             Smart TV&apos;s, smart speakers en Chromecast. Hij gaf ons concrete
@@ -55,7 +55,7 @@ export default function InterviewPage() {
                 <span className="font-medium text-[var(--color-foreground)]">
                   Rol:
                 </span>{" "}
-                Software Engineer bij Deezer (partnership team – Smart TV,
+                Software Engineer bij Deezer (partnership team,  Smart TV,
                 Chromecast, telecombundels)
               </li>
               <li>
@@ -148,7 +148,7 @@ export default function InterviewPage() {
                 begrijpen wat je code doet.
               </li>
               <li>
-                Coding is maar een deel van het werk –{" "}
+                Coding is maar een deel van het werk, 
                 <span className="text-[var(--color-foreground)]">
                   communicatie, samenwerken en requirements begrijpen
                 </span>{" "}
