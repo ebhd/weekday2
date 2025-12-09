@@ -107,6 +107,22 @@ export function Navbar() {
           </li>
           <li>
             <Link
+              href="/interview"
+              className="relative inline-block no-underline after-line"
+            >
+              Interview
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/webinar"
+              className="relative inline-block no-underline after-line"
+            >
+              Webinar
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/blog"
               className="relative inline-block no-underline after-line"
             >

@@ -85,7 +85,7 @@ export function Offers() {
     {
       index: ".1",
       title: "Discover Artist",
-      text: "Find fresh drill fast — verified profiles, real links, and tracks you can stream instantly.",
+      text: "Find fresh underground fast — verified profiles, real links, and tracks you can stream instantly.",
     },
     {
       index: ".2",

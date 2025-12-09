@@ -4,7 +4,7 @@ export function BackgroundFx() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-x-0 top-0 h-[1200px] z-0 overflow-hidden"
+      className="pointer-events-none absolute inset-x-0 top-0 h-[1200px] overflow-hidden z-0"
     >
       {/* Green radial gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(3300px_1100px_at_50%_-10%,_rgba(64,255,80,0.25),_transparent_35%)] opacity-30" />
