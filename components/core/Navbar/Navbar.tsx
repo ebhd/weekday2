@@ -129,6 +129,14 @@ export function Navbar() {
               Blogs
             </Link>
           </li>
+          <li>
+            <Link
+              href="/promovideo"
+              className="relative inline-block no-underline after-line"
+            >
+              Promo Video
+            </Link>
+          </li>
         </ul>
 
         {/* --- Desktop Buttons --- */}
@@ -227,7 +235,7 @@ export function Navbar() {
               className="text-4xl sm:text-5xl font-semibold"
             >
               <Link href="/about" className="hover:text-gray-300 duration-200">
-                About us
+                Over ons
               </Link>
               <motion.hr
                 variants={hrVariant}
@@ -242,6 +250,62 @@ export function Navbar() {
             >
               <Link href="/who" className="hover:text-gray-300 duration-200">
                 Wie is Wie?
+              </Link>
+              <motion.hr
+                variants={hrVariant}
+                className="bg-gray-600 h-px w-full mt-2"
+              />
+            </motion.div>
+            <motion.div
+              variants={liVariant}
+              transition={{ duration: 0.3, delay: 0.3, ease: customEase }}
+              onClick={handleClose}
+              className="text-4xl sm:text-5xl font-semibold"
+            >
+              <Link href="/who" className="hover:text-gray-300 duration-200">
+                Interview
+              </Link>
+              <motion.hr
+                variants={hrVariant}
+                className="bg-gray-600 h-px w-full mt-2"
+              />
+            </motion.div>
+            <motion.div
+              variants={liVariant}
+              transition={{ duration: 0.3, delay: 0.3, ease: customEase }}
+              onClick={handleClose}
+              className="text-4xl sm:text-5xl font-semibold"
+            >
+              <Link href="/who" className="hover:text-gray-300 duration-200">
+                Webinar
+              </Link>
+              <motion.hr
+                variants={hrVariant}
+                className="bg-gray-600 h-px w-full mt-2"
+              />
+            </motion.div>
+            <motion.div
+              variants={liVariant}
+              transition={{ duration: 0.3, delay: 0.3, ease: customEase }}
+              onClick={handleClose}
+              className="text-4xl sm:text-5xl font-semibold"
+            >
+              <Link href="/who" className="hover:text-gray-300 duration-200">
+               Blogs
+              </Link>
+              <motion.hr
+                variants={hrVariant}
+                className="bg-gray-600 h-px w-full mt-2"
+              />
+            </motion.div>
+            <motion.div
+              variants={liVariant}
+              transition={{ duration: 0.3, delay: 0.3, ease: customEase }}
+              onClick={handleClose}
+              className="text-4xl sm:text-5xl font-semibold"
+            >
+              <Link href="/who" className="hover:text-gray-300 duration-200">
+               PromoVideo
               </Link>
               <motion.hr
                 variants={hrVariant}
