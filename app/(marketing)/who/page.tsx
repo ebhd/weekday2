@@ -22,7 +22,7 @@ const team: TeamMember[] = [
     name: "Ebrahim Hdida",
     role: "Full-Stack Developer",
     description:
-      "Ik ben een software engineer met een passie voor technologie, design en muziekcultuur. Ik bouw platforms die artiesten helpen zich te uiten en nieuwe doelgroepen te bereiken, en zet met mijn achtergrond in toegepaste informatica ideeën om in sterke digitale ervaringen voor de undergroundscene.",
+      "Ik ben een software engineer met een passie voor technologie, design en muziekcultuur. Ik bouw websites die artiesten helpen zich te uiten en nieuwe doelgroepen te bereiken, en zet met mijn achtergrond in toegepaste informatica ideeën om in sterke digitale ervaringen voor de undergroundscene.",
     imageSrc: "/team/ebrahim.jpg",
     linkedinUrl: "https://www.linkedin.com/in/ebrahim-hdida",
     strengths: ["Ideeën", "Doorzetten", "Creatief"],
@@ -140,7 +140,7 @@ export default function WieIsWiePage() {
         <header className="flex flex-col items-center text-center space-y-4">
           <TextBar text="Wie is wie?" />
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl">
-            De crew achter het platform
+            De crew achter het website
           </h1>
           <p className="max-w-2xl text-xs sm:text-sm md:text-base text-muted-fg font-sans">
             Ons team bestaat uit gedreven makers met specialisaties in

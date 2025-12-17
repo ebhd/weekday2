@@ -25,7 +25,7 @@ export default function InterviewPage() {
                 werkt hij aan de frontend, partnerintegraties en de
                 Deezer-ervaring op Smart TV&apos;s, smart speakers en
                 Chromecast. Hij gaf ons concrete tips over hoe je een
-                muziekplatform ontwerpt, test en laat groeien.
+                muziekpwebsite ontwerpt, test en laat groeien.
               </p>
 
               <div className="flex flex-wrap gap-2 text-[11px] text-[var(--color-muted-fg)]">
@@ -98,7 +98,7 @@ export default function InterviewPage() {
                 Waarom dit interview belangrijk was
               </h3>
               <p className="text-sm md:text-base text-[var(--color-muted-fg)]">
-                Wij bouwen een platform voor underground artiesten. Paul werkt
+                Wij bouwen een website voor underground artiesten. Paul werkt
                 dagelijks aan echte muziekproducten. Zijn ervaring hielp ons
                 nadenken over{" "}
                 <span className="text-[var(--color-foreground)]">

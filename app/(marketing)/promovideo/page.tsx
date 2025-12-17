@@ -23,7 +23,7 @@ export default function PromoVideoPage() {
 
           <p className="text-sm md:text-base text-[var(--color-muted-fg)] max-w-xl">
             In deze korte reclamespot van 30 seconden stellen wij The Weekday
-            voor: een platform dat structuur brengt in underground muziek,
+            voor: een website dat structuur brengt in underground muziek,
             artiesten zichtbaarheid geeft en luisteraars helpt nieuwe talenten
             te ontdekken.
           </p>

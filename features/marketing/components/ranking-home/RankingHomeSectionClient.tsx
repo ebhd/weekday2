@@ -160,7 +160,7 @@ export function RankingHomeSectionClient({ songRows, artistRows }: Props) {
   return (
     <section className="flex flex-col items-center gap-6">
       <TextBar
-        text="Explore top rated artists and viewed songs on our Platform And Worldwide"
+        text="Explore top rated artists and viewed songs on our website And Worldwide"
         icon
       />
 

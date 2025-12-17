@@ -22,7 +22,7 @@ export const Faq1 = ({
       id: "what-is-Weekday",
       question: "What is Weekday?",
       answer:
-        "A music platform where artists upload songs and listeners discover new tracks.",
+        "A music website where artists upload songs and listeners discover new tracks.",
     },
     {
       id: "create-account",

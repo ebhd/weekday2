@@ -35,7 +35,7 @@ export default function About() {
   const items = [
     {
       index: ".1",
-      title: "Platform voor makers",
+      title: "Website voor makers",
       text: "We geven artiesten een plek om hun werk te tonen en zichtbaar te worden in een scene die vaak verborgen blijft.",
     },
     {
@@ -51,7 +51,7 @@ export default function About() {
     {
       index: ".4",
       title: "Ruimte voor groei",
-      text: "We creëren een platform waar verhalen, projecten en talent van opkomende artiesten kunnen ontwikkelen.",
+      text: "We creëren een website waar verhalen, projecten en talent van opkomende artiesten kunnen ontwikkelen.",
     },
   ];
 
